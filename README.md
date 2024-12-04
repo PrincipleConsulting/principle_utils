@@ -1,39 +1,43 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Principle Utils
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A Dart utility package containing custom colors, extensions, sizing utilities, and common types for Principle projects.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+## Overview
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This package provides a set of helpful utilities to streamline Flutter development for Principle projects. It includes:
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+* **Custom Colors:** A set of color definitions widely used at Principle, ensuring brand consistency across projects.
+* **Extensions:** Dart extension functions for various classes, simplifying common operations and improving code readability.
+* **Sizing:** Utilities for managing dimensions and spacing in your layouts, promoting a unified visual style.
+* **Types:** Common type definitions and aliases, enhancing code clarity and maintainability.
 
 ## Getting started
 
 TODO: List prerequisites and provide or point to information on how to
 start using the package.
 
+
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+To use the components of the `principle_utils` package, simply import the desired class or function into your Dart file. For example:
 
 ```dart
 const like = 'sample';
 ```
 
-## Additional information
+## Modules
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+The `principle_utils` package is organized into the following modules:
+
+* **custom_colors:** Contains the custom color palette used at Principle.
+* **extensions:** Provides Dart extension functions for various classes.
+* **sizing:** Includes utilities for managing dimensions and spacing.
+* **types:** Defines common type definitions and aliases.
+
+## Contributing
+
+Contributions to the `principle_utils` package are welcome! If you have a utility class, extension function, or custom view that you think would be beneficial, feel free to submit a pull request. Please ensure that your code follows the project's coding style and includes proper documentation.
+
+## License
+
+This package is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
