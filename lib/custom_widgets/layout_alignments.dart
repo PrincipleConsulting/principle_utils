@@ -84,7 +84,7 @@ class BottomCenter extends Align {
         );
 }
 
-/// Custom `Align` widget that aligns the child at the bottom-right of its parent container.
+/// Custom [Align] widget that aligns the child at the bottom-right of its parent container.
 class BottomRight extends Align {
   const BottomRight({
     super.key, // Optional key to uniquely identify this widget.

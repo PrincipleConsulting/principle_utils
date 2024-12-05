@@ -22,7 +22,7 @@ start using the package.
 To use the components of the `principle_utils` package, simply import the desired class or function into your Dart file. For example:
 
 ```dart
-const like = 'sample';
+final double width = context.screenWidth ;
 ```
 
 ## Modules

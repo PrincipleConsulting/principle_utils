@@ -1,53 +1,99 @@
-abstract final class TextSize {
-  // Extra small text size (12px), suitable for captions or small details
-  static const double textXsFontSize = 12; // Font size for extra small text
-  static const double textXsLineHeight = 1.33; // Line height for extra small text
+/// A utility class for defining standard font sizes and line heights.
+///
+/// The `FontSize` class provides predefined constants for font sizes and line heights,
+/// which are useful for maintaining consistency and readability across text elements in your app.
+/// These constants are typically used for defining text styles such as headings, body text,
+/// captions, and other typographic elements.
+///
+/// ### Example Usage:
+/// ```dart
+/// Text(
+///   'Hello, world!',
+///   style: TextStyle(
+///     fontSize: FontSize.textBaseFontSize, // Use base font size (16px)
+///     height: FontSize.textBaseLineHeight, // Use base line height
+///   ),
+/// );
+/// ```
+///
+/// ### Note:
+/// These values are based on logical pixels, ensuring consistent typography across various screen sizes.
+abstract final class FontSize {
+  /// Font size for extra small text (12px)
+  static const double textXsFontSize = 12;
 
-  // Small text size (14px), ideal for smaller body text
-  static const double textSmFontSize = 14; // Font size for small text
-  static const double textSmLineHeight = 1.43; // Line height for small text
+  /// Line height for extra small text
+  static const double textXsLineHeight = 1.33;
 
-  // Base text size (16px), standard for general content
-  static const double textBaseFontSize = 16; // Font size for base (normal) text
-  static const double textBaseLineHeight = 1.5; // Line height for base text
+  /// Font size for small text (14px)
+  static const double textSmFontSize = 14;
 
-  // Large text size (18px), used for headers or section titles
-  static const double textLgFontSize = 18; // Font size for large text
-  static const double textLgLineHeight = 1.56; // Line height for large text
+  /// Line height for small text
+  static const double textSmLineHeight = 1.43;
 
-  // Extra large text size (20px), for key headings or emphasis
-  static const double textXlFontSize = 20; // Font size for extra large text
-  static const double textXlLineHeight = 1.75; // Line height for extra large text
+  /// Font size for base (normal) text (16px)
+  static const double textBaseFontSize = 16;
 
-  // 2x Extra large text size (24px), used for prominent headings
-  static const double text2XlFontSize = 24; // Font size for 2x extra large text
-  static const double text2XlLineHeight = 2; // Line height for 2x extra large text
+  /// Line height for base text
+  static const double textBaseLineHeight = 1.5;
 
-  // 3x Extra large text size (30px), for larger and more noticeable headers
-  static const double text3XlFontSize = 30; // Font size for 3x extra large text
-  static const double text3XlLineHeight = 2.25; // Line height for 3x extra large text
+  /// Font size for large text (18px)
+  static const double textLgFontSize = 18;
 
-  // 4x Extra large text size (36px), for major section titles or important headers
-  static const double text4XlFontSize = 36; // Font size for 4x extra large text
-  static const double text4XlLineHeight = 2.5; // Line height for 4x extra large text
+  /// Line height for large text
+  static const double textLgLineHeight = 1.56;
 
-  // 5x Extra large text size (48px), for large headlines or featured text
-  static const double text5XlFontSize = 48; // Font size for 5x extra large text
-  static const double text5XlLineHeight = 1; // Line height for 5x extra large text
+  /// Font size for extra large text (20px)
+  static const double textXlFontSize = 20;
 
-  // 6x Extra large text size (60px), often used for hero text or splash pages
-  static const double text6XlFontSize = 60; // Font size for 6x extra large text
-  static const double text6XlLineHeight = 1; // Line height for 6x extra large text
+  /// Line height for extra large text
+  static const double textXlLineHeight = 1.75;
 
-  // 7x Extra large text size (72px), used for major headings
-  static const double text7XlFontSize = 72; // Font size for 7x extra large text
-  static const double text7XlLineHeight = 1; // Line height for 7x extra large text
+  /// Font size for 2x extra large text (24px)
+  static const double text2XlFontSize = 24;
 
-  // 8x Extra large text size (96px), for very large text like featured headers
-  static const double text8XlFontSize = 96; // Font size for 8x extra large text
-  static const double text8XlLineHeight = 1; // Line height for 8x extra large text
+  /// Line height for 2x extra large text
+  static const double text2XlLineHeight = 2;
 
-  // 9x Extra large text size (128px), used for maximum visual impact in hero text
-  static const double text9XlFontSize = 128; // Font size for 9x extra large text
-  static const double text9XlLineHeight = 1; // Line height for 9x extra large text
+  /// Font size for 3x extra large text (30px)
+  static const double text3XlFontSize = 30;
+
+  /// Line height for 3x extra large text
+  static const double text3XlLineHeight = 2.25;
+
+  /// Font size for 4x extra large text (36px)
+  static const double text4XlFontSize = 36;
+
+  /// Line height for 4x extra large text
+  static const double text4XlLineHeight = 2.5;
+
+  /// Font size for 5x extra large text (48px)
+  static const double text5XlFontSize = 48;
+
+  /// Line height for 5x extra large text
+  static const double text5XlLineHeight = 1;
+
+  /// Font size for 6x extra large text (60px)
+  static const double text6XlFontSize = 60;
+
+  /// Line height for 6x extra large text
+  static const double text6XlLineHeight = 1;
+
+  /// Font size for 7x extra large text (72px)
+  static const double text7XlFontSize = 72;
+
+  /// Line height for 7x extra large text
+  static const double text7XlLineHeight = 1;
+
+  /// Font size for 8x extra large text (96px)
+  static const double text8XlFontSize = 96;
+
+  /// Line height for 8x extra large text
+  static const double text8XlLineHeight = 1;
+
+  /// Font size for 9x extra large text (128px)
+  static const double text9XlFontSize = 128;
+
+  /// Line height for 9x extra large text
+  static const double text9XlLineHeight = 1;
 }
