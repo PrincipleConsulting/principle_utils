@@ -18,7 +18,7 @@
 ///
 /// ### Note:
 /// These values are based on logical pixels, ensuring consistent typography across various screen sizes.
-abstract final class FontSize {
+abstract final class FontSizeLP {
   /// Font size for extra small text (12px)
   static const double textXsFontSize = 12;
 

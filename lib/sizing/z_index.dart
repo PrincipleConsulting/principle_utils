@@ -34,7 +34,7 @@
 ///
 /// The higher the z-index value, the closer the widget appears to the user in
 /// the stacking order.
-abstract final class ZIndex {
+abstract final class ZIndexLP {
   /// Default z-index: 0.
   static const int z0 = 0;
 

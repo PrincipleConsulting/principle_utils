@@ -16,7 +16,7 @@
 /// ### Note:
 /// These constants represent **logical pixels**, which scale with screen size and
 /// density, providing a consistent user experience on different devices.
-abstract final class Height {
+abstract final class HeightLP {
   /// 0 logical pixels
   static const double h0 = 0.0;
 

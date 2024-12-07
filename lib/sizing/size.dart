@@ -16,7 +16,7 @@
 /// ### Note:
 /// The size values are defined in **logical pixels**, which are device-independent units.
 /// Logical pixels are based on the screen resolution and adapt to different device densities.
-abstract final class Size {
+abstract final class SizeLP {
   /// 0 logical pixels
   static const double s0 = 0.0;
 

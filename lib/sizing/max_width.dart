@@ -15,7 +15,7 @@
 /// ### Note:
 /// The width values are defined in **logical pixels**, which are device-independent units.
 /// Logical pixels adapt to different device densities and screen sizes, ensuring consistent UI behavior.
-abstract final class MaxWidth {
+abstract final class MaxWidthLP {
   /// 0 logical pixels
   static const double w0 = 0.0;
 

@@ -21,7 +21,7 @@
 /// ### Note:
 /// The spacing values are defined in logical pixels, which are resolution-independent
 /// and adapt based on the device's screen size and density.
-abstract final class SpacingSpace {
+abstract final class SpacingSpaceLP {
   /// Smallest spacing, useful for tight spaces (in logical pixels).
   static const double sp4 = 4;
 

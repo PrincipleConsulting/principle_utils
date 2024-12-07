@@ -15,7 +15,7 @@
 ///
 /// All constants are measured in logical pixels (not device pixels) and are
 /// static, so they can be accessed without instantiating the class.
-abstract final class Width {
+abstract final class WidthLP {
   /// 0 logical pixels
   static const double w0 = 0.0;
 

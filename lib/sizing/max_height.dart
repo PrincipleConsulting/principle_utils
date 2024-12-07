@@ -15,7 +15,7 @@
 /// ### Note:
 /// The height values are defined in **logical pixels**, which are device-independent units.
 /// Logical pixels adapt to different device densities and screen sizes, ensuring consistent UI behavior.
-abstract final class MaxHeight {
+abstract final class MaxHeightLP {
   /// 0 logical pixels
   static const double h0 = 0.0;
 

@@ -1,5 +1,5 @@
 /// A utility class that holds commonly used border radius values.
-abstract final class BorderRadius {
+abstract final class RadiusSize {
   /// Small radii for subtle curves
   static const double small = 4.0;
 
