@@ -20,7 +20,6 @@ Add this package to your `pubspec.yaml`:
 dependencies:
   principle_utils: latest_version
 ```
-```
 
 Then, run:
 
