@@ -1,82 +1,83 @@
-/// A utility class for defining standard spacing values in Flutter applications.
+/// A utility class that defines a standardized set of spacing constants for Flutter applications.
 ///
-/// The `SpacingSpace` class provides predefined constants for common spacing
-/// needs such as padding, margins, and visual separation between UI elements.
-/// These constants are defined in Flutter's logical pixels and help ensure
-/// consistency and clarity across the UI.
+/// The `TWSpace` class provides a comprehensive collection of predefined spacing values used for
+/// padding, margins, and visual separation between UI elements. All values are defined in **logical pixels**,
+/// ensuring that your app's layout scales appropriately on different devices and screen densities.
 ///
 /// ### Spacing Categories:
-/// - **Small Spacing**: For tight gaps, padding, or minor visual separations.
-/// - **Medium Spacing**: For regular content separation or padding between sections.
-/// - **Large Spacing**: For larger gaps between major sections or large margins.
+/// - **Small Spacing**: Ideal for tight gaps, minimal padding, or subtle visual separations.
+/// - **Medium Spacing**: Suitable for regular content separation, standard padding, or margins between elements.
+/// - **Large Spacing**: Used for pronounced gaps, major section dividers, or large margins.
 ///
 /// ### Example Usage:
 /// ```dart
 /// Container(
-///   padding: EdgeInsets.all(SpacingSpace.sp16), // Medium spacing around content
+///   padding: EdgeInsets.all(TWSpace.sp16), // Medium spacing around content
 ///   child: Text('Hello, World!'),
 /// );
 /// ```
 ///
 /// ### Note:
-/// The spacing values are defined in logical pixels, which are resolution-independent
-/// and adapt based on the device's screen size and density.
-abstract final class SpacingSpaceLP {
-  /// Smallest spacing, useful for tight spaces (in logical pixels).
+/// - All spacing values are expressed in **logical pixels** (device-independent units).
+/// - This class is not meant to be instantiated or extended.
+abstract final class TWSpace {
+  // Small Spacing Values
+
+  /// The smallest spacing value (4 logical pixels), suitable for tight spaces.
   static const double sp4 = 4;
 
-  /// Slightly larger than 4px spacing (in logical pixels).
+  /// A slightly larger spacing value (5 logical pixels).
   static const double sp5 = 5;
 
-  /// Common for small padding in buttons or icons (in logical pixels).
+  /// A small spacing value (6 logical pixels) ideal for minor padding.
   static const double sp6 = 6;
 
-  /// Used for minor visual separation (in logical pixels).
+  /// A small spacing value (7 logical pixels) for subtle separations.
   static const double sp7 = 7;
 
-  /// Common margin for cards or elements (in logical pixels).
+  /// A common spacing value (8 logical pixels) often used for small margins or padding.
   static const double sp8 = 8;
 
-  /// Frequently used for small gaps in between items (in logical pixels).
+  /// A small gap of 10 logical pixels.
   static const double sp10 = 10;
 
-  /// Standard small spacing for cards and buttons (in logical pixels).
+  /// Standard small spacing (12 logical pixels), useful for buttons or compact elements.
   static const double sp12 = 12;
 
-  /// Medium-small space for slight separation (in logical pixels).
+  /// A medium-small spacing value (14 logical pixels) for slight separation.
   static const double sp14 = 14;
 
-  // Medium Spacing (Used for regular content separation, padding, or margins)
+  // Medium Spacing Values
 
-  /// Ideal for regular padding or margin (in logical pixels).
+  /// Medium spacing for balanced padding or margin (16 logical pixels).
   static const double sp16 = 16;
 
-  /// Medium space often used for content grouping (in logical pixels).
+  /// A medium spacing value (18 logical pixels) often used for grouping content.
   static const double sp18 = 18;
 
-  /// Standard for separating sections or elements (in logical pixels).
+  /// Standard medium spacing (20 logical pixels) for regular element separation.
   static const double sp20 = 20;
 
-  /// Slightly larger than 20px for visual breathing room (in logical pixels).
+  /// A slightly larger medium spacing value (22 logical pixels) for added breathing room.
   static const double sp22 = 22;
 
-  /// Common for consistent separation in layouts (in logical pixels).
+  /// Common medium spacing (24 logical pixels) used consistently across layouts.
   static const double sp24 = 24;
 
-  /// Slightly larger than 24px for additional spacing (in logical pixels).
+  /// A medium spacing value (26 logical pixels) for extra padding or separation.
   static const double sp26 = 26;
 
-  // Large Spacing (Used for larger gaps, padding, or between major sections)
+  // Large Spacing Values
 
-  /// Large spacing, typically for sections or large margins (in logical pixels).
+  /// Large spacing for major sections or significant margins (48 logical pixels).
   static const double sp48 = 48;
 
-  /// Slightly more than 48px, used for major separations (in logical pixels).
+  /// A slightly larger spacing value (50 logical pixels) for prominent separations.
   static const double sp50 = 50;
 
-  /// Used for very large gaps between sections or cards (in logical pixels).
+  /// Very large spacing for major UI divisions (96 logical pixels).
   static const double sp96 = 96;
 
-  /// Similar to 96px, used for very large margins/padding (in logical pixels).
+  /// An extra-large spacing value (98 logical pixels) for significant padding or margins.
   static const double sp98 = 98;
 }

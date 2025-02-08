@@ -1,116 +1,236 @@
 import 'package:flutter/material.dart';
 
-/// This extension on `TextStyle` provides a fluent and intuitive API for
-/// modifying text styles in Flutter. It allows chaining various text styling
-/// methods to create custom `TextStyle` objects more efficiently.
+/// A fluent extension on [TextStyle] that enables method chaining for building
+/// text styles in a declarative manner.
 ///
-/// Example usage:
+/// This extension provides chainable methods for all [TextStyle] properties,
+/// along with semantic shortcuts for common typographic modifications.
+///
+/// ## Usage
+///
 /// ```dart
-/// Text(
-///   'Hello, FluentTextExtension!',
-///   style: TextStyle().bold.size(20).textColor(Colors.blue),
-/// );
+/// const TextStyle().bold.size(20).textColor(Colors.blue).underline
 /// ```
+///
+/// For package maintainers: All methods return new [TextStyle] instances using
+/// [copyWith], ensuring original styles remain immutable.
 extension FluentTextExtension on TextStyle {
+  //----------------------------------------------------------------------------
   // Font weight shortcuts
-  /// Applies `FontWeight.w100` (thin) to the `TextStyle`.
+  //----------------------------------------------------------------------------
+
+  /// Applies ultra-thin font weight (FontWeight.w100)
   TextStyle get thin => weight(FontWeight.w100);
 
-  /// Applies `FontWeight.w200` (extra light) to the `TextStyle`.
+  /// Applies extra-light font weight (FontWeight.w200)
   TextStyle get extraLight => weight(FontWeight.w200);
 
-  /// Applies `FontWeight.w300` (light) to the `TextStyle`.
+  /// Applies light font weight (FontWeight.w300)
   TextStyle get light => weight(FontWeight.w300);
 
-  /// Applies `FontWeight.normal` (regular) to the `TextStyle`.
+  /// Applies regular/normal font weight (FontWeight.w400)
   TextStyle get regular => weight(FontWeight.normal);
 
-  /// Applies `FontWeight.w500` (medium) to the `TextStyle`.
+  /// Applies medium font weight (FontWeight.w500)
   TextStyle get medium => weight(FontWeight.w500);
 
-  /// Applies `FontWeight.w600` (semi-bold) to the `TextStyle`.
+  /// Applies semi-bold font weight (FontWeight.w600)
   TextStyle get semiBold => weight(FontWeight.w600);
 
-  /// Applies `FontWeight.w700` (bold) to the `TextStyle`.
+  /// Applies bold font weight (FontWeight.w700)
   TextStyle get bold => weight(FontWeight.w700);
 
-  /// Applies `FontWeight.w800` (extra bold) to the `TextStyle`.
+  /// Applies extra-bold font weight (FontWeight.w800)
   TextStyle get extraBold => weight(FontWeight.w800);
 
-  /// Applies `FontWeight.w900` (black) to the `TextStyle`.
+  /// Applies black/heavy font weight (FontWeight.w900)
   TextStyle get black => weight(FontWeight.w900);
 
+  //----------------------------------------------------------------------------
   // Font style shortcuts
-  /// Applies italic styling to the `TextStyle`.
+  //----------------------------------------------------------------------------
+
+  /// Applies italic font style, overriding any existing font style
   TextStyle get italic => style(FontStyle.italic);
 
+  //----------------------------------------------------------------------------
   // Text decoration shortcuts
-  /// Underlines the text.
+  //----------------------------------------------------------------------------
+
+  /// Adds solid underline decoration using current text color
   TextStyle get underline => textDecoration(TextDecoration.underline);
 
-  /// Strikes through the text.
+  /// Adds strikethrough decoration using current text color
   TextStyle get lineThrough => textDecoration(TextDecoration.lineThrough);
 
-  /// Adds an over-line to the text.
+  /// Adds overline decoration using current text color
   TextStyle get overline => textDecoration(TextDecoration.overline);
 
-  // Custom property methods
-  /// Sets the text color.
-  TextStyle textColor(Color v) => copyWith(color: v);
+  //----------------------------------------------------------------------------
+  // Core property methods
+  //----------------------------------------------------------------------------
 
-  /// Sets the background color for the text.
-  TextStyle textBackgroundColor(Color v) => copyWith(backgroundColor: v);
+  /// Sets text color to the specified [color]
+  ///
+  /// ```dart
+  /// TextStyle().textColor(Colors.blueAccent)
+  /// ```
+  TextStyle textColor(Color color) => copyWith(color: color);
 
-  /// Sets the font size.
-  TextStyle size(double v) => copyWith(fontSize: v);
+  /// Sets background color behind the text
+  ///
+  /// ```dart
+  /// TextStyle().textBackgroundColor(Colors.yellow.withOpacity(0.3))
+  /// ```
+  TextStyle textBackgroundColor(Color color) => copyWith(backgroundColor: color);
 
-  /// Scales the font size by a given factor.
-  TextStyle scale(double v) => copyWith(fontSize: fontSize == null ? 16 * v : fontSize! * v);
+  /// Sets absolute font size in logical pixels
+  ///
+  /// Prefer using [scale] for relative size adjustments based on current size
+  TextStyle size(double size) => copyWith(fontSize: size);
 
-  /// Applies a specific font weight.
-  TextStyle weight(FontWeight v) => copyWith(fontWeight: v);
+  /// Multiplies current font size by [factor]
+  ///
+  /// When current fontSize is null:
+  /// - Uses 16.0 as base size (matches default Flutter text style)
+  ///
+  /// ```dart
+  /// TextStyle(fontSize: 10).scale(2) // 20px
+  /// TextStyle().scale(1.5)          // 24px
+  /// ```
+  TextStyle scale(double factor) => copyWith(
+        fontSize: fontSize == null ? 16 * factor : fontSize! * factor,
+      );
 
-  /// Applies a specific font style (e.g., italic).
-  TextStyle style(FontStyle v) => copyWith(fontStyle: v);
+  /// Sets explicit [weight], overriding any existing fontWeight
+  TextStyle weight(FontWeight weight) => copyWith(fontWeight: weight);
 
-  /// Sets the letter spacing.
-  TextStyle letterSpace(double v) => copyWith(letterSpacing: v);
+  /// Sets font style, typically used for italics
+  TextStyle style(FontStyle style) => copyWith(fontStyle: style);
 
-  /// Sets the word spacing.
-  TextStyle wordSpace(double v) => copyWith(wordSpacing: v);
+  //----------------------------------------------------------------------------
+  // Advanced typography methods
+  //----------------------------------------------------------------------------
 
-  /// Sets the text baseline.
-  TextStyle baseline(TextBaseline v) => copyWith(textBaseline: v);
+  /// Sets letter spacing in logical pixels
+  ///
+  /// Negative values tighten text, positive values expand it
+  TextStyle letterSpace(double spacing) => copyWith(letterSpacing: spacing);
 
-  /// Sets the line height.
-  TextStyle textHeight(double v) => copyWith(height: v);
+  /// Sets word spacing in logical pixels
+  ///
+  /// Affects whitespace gaps between words
+  TextStyle wordSpace(double spacing) => copyWith(wordSpacing: spacing);
 
-  /// Sets the locale for the text.
-  TextStyle textLocale(Locale v) => copyWith(locale: v);
+  /// Sets vertical text alignment baseline
+  TextStyle baseline(TextBaseline baseline) => copyWith(textBaseline: baseline);
 
-  /// Sets the foreground paint for the text.
-  TextStyle textForeground(Paint v) => copyWith(foreground: v);
+  /// Sets line height multiplier relative to font size
+  ///
+  /// ```dart
+  /// TextStyle().textHeight(1.5) // 150% of font size
+  /// ```
+  TextStyle textHeight(double height) => copyWith(height: height);
 
-  /// Sets the background paint for the text.
-  TextStyle textBackground(Paint v) => copyWith(background: v);
-
-  /// Sets the shadow(s) for the text.
-  TextStyle textShadows(List<Shadow> v) => copyWith(shadows: v);
-
-  /// Sets the font features for the text.
-  TextStyle textFeatures(List<FontFeature> v) => copyWith(fontFeatures: v);
-
-  /// Applies text decoration with optional color, style, and thickness.
+  /// Configures text decoration with optional styling parameters
+  ///
+  /// ```dart
+  /// TextStyle().textDecoration(
+  ///   TextDecoration.underline,
+  ///   color: Colors.red,
+  ///   style: TextDecorationStyle.dashed,
+  /// )
+  /// ```
   TextStyle textDecoration(
-    TextDecoration v, {
+    TextDecoration decoration, {
     Color? color,
     TextDecorationStyle? style,
     double? thickness,
   }) =>
       copyWith(
-        decoration: v,
+        decoration: decoration,
         decorationColor: color,
         decorationStyle: style,
         decorationThickness: thickness,
       );
+
+  //----------------------------------------------------------------------------
+  // Platform-specific rendering methods
+  //----------------------------------------------------------------------------
+
+  /// Sets text locale for region-specific glyph selection
+  TextStyle textLocale(Locale locale) => copyWith(locale: locale);
+
+  /// Sets complex foreground painting effects
+  ///
+  /// Advanced usage - prefer [textColor] for solid colors
+  TextStyle textForeground(Paint paint) => copyWith(foreground: paint);
+
+  /// Sets complex background painting effects
+  ///
+  /// Advanced usage - prefer [textBackgroundColor] for solid colors
+  TextStyle textBackground(Paint paint) => copyWith(background: paint);
+
+  /// Adds text shadows with specified [shadows]
+  ///
+  /// ```dart
+  /// TextStyle().textShadows([
+  ///   Shadow(color: Colors.black, blurRadius: 2, offset: Offset(1, 1))
+  /// ])
+  /// ```
+  TextStyle textShadows(List<Shadow> shadows) => copyWith(shadows: shadows);
+
+  /// Sets OpenType font features
+  ///
+  /// ```dart
+  /// TextStyle().textFeatures([
+  ///   FontFeature.tabularNumbers()
+  /// ])
+  /// ```
+  TextStyle textFeatures(List<FontFeature> features) => copyWith(fontFeatures: features);
+
+  /// Configures text overflow handling
+  TextStyle overflow(TextOverflow overflow) => copyWith(overflow: overflow);
+
+  /// Sets vertical leading distribution
+  ///
+  /// Affects how additional vertical space is distributed
+  /// above/below the text baseline
+  TextStyle leadingDistribution(TextLeadingDistribution distribution) => copyWith(leadingDistribution: distribution);
+
+  //----------------------------------------------------------------------------
+  // Font configuration methods
+  //----------------------------------------------------------------------------
+
+  /// Sets primary font family
+  TextStyle textFontFamily(String family) => copyWith(fontFamily: family);
+
+  /// Sets ordered list of fallback font families
+  TextStyle fontFamilyFallback(List<String> fallback) => copyWith(fontFamilyFallback: fallback);
+
+  /// Sets variable font variations
+  TextStyle fontVariations(List<FontVariation> variations) => copyWith(fontVariations: variations);
+
+  /// Controls inheritance of parent text style properties
+  ///
+  /// When [inherit] is true (default), unresolved properties cascade from
+  /// ancestor text styles
+  TextStyle inherit(bool inherit) => copyWith(inherit: inherit);
+
+  //----------------------------------------------------------------------------
+  // Decoration styling methods
+  //----------------------------------------------------------------------------
+
+  /// Sets text decoration color
+  ///
+  /// Defaults to current text color when null
+  TextStyle decorationColor(Color color) => copyWith(decorationColor: color);
+
+  /// Sets text decoration line style
+  TextStyle decorationStyle(TextDecorationStyle style) => copyWith(decorationStyle: style);
+
+  /// Sets text decoration line thickness
+  ///
+  /// Thickness is multiplied by the font size
+  TextStyle decorationThickness(double thickness) => copyWith(decorationThickness: thickness);
 }

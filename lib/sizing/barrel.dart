@@ -1,11 +1,5 @@
 export 'border.dart';
+export 'elevation.dart';
 export 'font_size.dart';
-export 'height.dart';
-export 'max_height.dart';
-export 'max_width.dart';
-export 'min_height.dart';
-export 'min_width.dart';
 export 'size.dart';
 export 'spacing.dart';
-export 'width.dart';
-export 'z_index.dart';

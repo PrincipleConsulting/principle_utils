@@ -1,160 +1,159 @@
-/// A utility class for defining standard size values in Flutter applications.
+/// A utility class that defines a standardized set of size values for Flutter applications.
 ///
-/// The `Size` class provides predefined constants for common size needs such as
-/// element dimensions, spacing, and padding. These constants are defined in Flutter's
-/// logical pixels, which are resolution-independent and scale with the device's screen size
-/// and density.
+/// The `TWSize` class provides a comprehensive collection of predefined constants representing
+/// common dimensions used for layout, spacing, and padding. All values are expressed in **logical pixels**,
+/// ensuring that your app's UI scales appropriately across devices with different screen sizes and densities.
 ///
 /// ### Example Usage:
 /// ```dart
 /// Container(
-///   width: Size.s16, // Set width to 16 logical pixels
-///   height: Size.s20, // Set height to 20 logical pixels
+///   width: TWSize.s16, // 64 logical pixels
+///   height: TWSize.s20, // 80 logical pixels
 /// );
 /// ```
 ///
 /// ### Note:
-/// The size values are defined in **logical pixels**, which are device-independent units.
-/// Logical pixels are based on the screen resolution and adapt to different device densities.
-abstract final class SizeLP {
-  /// 0 logical pixels
+/// - All size values are defined in **logical pixels** (device-independent units).
+/// - This class is not intended to be instantiated or extended.
+abstract final class TWSize {
+  /// 0 logical pixels.
   static const double s0 = 0.0;
 
-  /// 1 logical pixel
+  /// 1 logical pixel.
   static const double sPx = 1.0;
 
-  /// 2 logical pixels
+  /// 2 logical pixels.
   static const double s0_5 = 2.0;
 
-  /// 4 logical pixels
+  /// 4 logical pixels.
   static const double s1 = 4.0;
 
-  /// 6 logical pixels
+  /// 6 logical pixels.
   static const double s1_5 = 6.0;
 
-  /// 8 logical pixels
+  /// 8 logical pixels.
   static const double s2 = 8.0;
 
-  /// 10 logical pixels
+  /// 10 logical pixels.
   static const double s2_5 = 10.0;
 
-  /// 12 logical pixels
+  /// 12 logical pixels.
   static const double s3 = 12.0;
 
-  /// 14 logical pixels
+  /// 14 logical pixels.
   static const double s3_5 = 14.0;
 
-  /// 16 logical pixels
+  /// 16 logical pixels.
   static const double s4 = 16.0;
 
-  /// 20 logical pixels
+  /// 20 logical pixels.
   static const double s5 = 20.0;
 
-  /// 24 logical pixels
+  /// 24 logical pixels.
   static const double s6 = 24.0;
 
-  /// 28 logical pixels
+  /// 28 logical pixels.
   static const double s7 = 28.0;
 
-  /// 32 logical pixels
+  /// 32 logical pixels.
   static const double s8 = 32.0;
 
-  /// 36 logical pixels
+  /// 36 logical pixels.
   static const double s9 = 36.0;
 
-  /// 40 logical pixels
+  /// 40 logical pixels.
   static const double s10 = 40.0;
 
-  /// 44 logical pixels
+  /// 44 logical pixels.
   static const double s11 = 44.0;
 
-  /// 48 logical pixels
+  /// 48 logical pixels.
   static const double s12 = 48.0;
 
-  /// 56 logical pixels
+  /// 56 logical pixels.
   static const double s14 = 56.0;
 
-  /// 64 logical pixels
+  /// 64 logical pixels.
   static const double s16 = 64.0;
 
-  /// 80 logical pixels
+  /// 80 logical pixels.
   static const double s20 = 80.0;
 
-  /// 96 logical pixels
+  /// 96 logical pixels.
   static const double s24 = 96.0;
 
-  /// 112 logical pixels
+  /// 112 logical pixels.
   static const double s28 = 112.0;
 
-  /// 128 logical pixels
+  /// 128 logical pixels.
   static const double s32 = 128.0;
 
-  /// 144 logical pixels
+  /// 144 logical pixels.
   static const double s36 = 144.0;
 
-  /// 160 logical pixels
+  /// 160 logical pixels.
   static const double s40 = 160.0;
 
-  /// 176 logical pixels
+  /// 176 logical pixels.
   static const double s44 = 176.0;
 
-  /// 192 logical pixels
+  /// 192 logical pixels.
   static const double s48 = 192.0;
 
-  /// 208 logical pixels
+  /// 208 logical pixels.
   static const double s52 = 208.0;
 
-  /// 224 logical pixels
+  /// 224 logical pixels.
   static const double s56 = 224.0;
 
-  /// 240 logical pixels
+  /// 240 logical pixels.
   static const double s60 = 240.0;
 
-  /// 256 logical pixels
+  /// 256 logical pixels.
   static const double s64 = 256.0;
 
-  /// 288 logical pixels
+  /// 288 logical pixels.
   static const double s72 = 288.0;
 
-  /// 320 logical pixels
+  /// 320 logical pixels.
   static const double s80 = 320.0;
 
-  /// 384 logical pixels
+  /// 384 logical pixels.
   static const double s96 = 384.0;
 
-  /// 448 logical pixels
+  /// 448 logical pixels.
   static const double s112 = 448.0;
 
-  /// 512 logical pixels
+  /// 512 logical pixels.
   static const double s128 = 512.0;
 
-  /// 576 logical pixels
+  /// 576 logical pixels.
   static const double s144 = 576.0;
 
-  /// 640 logical pixels
+  /// 640 logical pixels.
   static const double s160 = 640.0;
 
-  /// 704 logical pixels
+  /// 704 logical pixels.
   static const double s176 = 704.0;
 
-  /// 768 logical pixels
+  /// 768 logical pixels.
   static const double s192 = 768.0;
 
-  /// 832 logical pixels
+  /// 832 logical pixels.
   static const double s208 = 832.0;
 
-  /// 896 logical pixels
+  /// 896 logical pixels.
   static const double s224 = 896.0;
 
-  /// 960 logical pixels
+  /// 960 logical pixels.
   static const double s240 = 960.0;
 
-  /// 1024 logical pixels
+  /// 1024 logical pixels.
   static const double s256 = 1024.0;
 
-  /// 1152 logical pixels
+  /// 1152 logical pixels.
   static const double s288 = 1152.0;
 
-  /// 1280 logical pixels
+  /// 1280 logical pixels.
   static const double s320 = 1280.0;
 }

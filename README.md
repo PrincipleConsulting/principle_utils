@@ -1,3 +1,4 @@
+```markdown
 # Principle Utils
 
 A Dart utility package containing custom colors, extensions, sizing utilities, and common types for Principle projects.
@@ -11,33 +12,119 @@ This package provides a set of helpful utilities to streamline Flutter developme
 * **Sizing:** Utilities for managing dimensions and spacing in your layouts, promoting a unified visual style.
 * **Types:** Common type definitions and aliases, enhancing code clarity and maintainability.
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add this package to your `pubspec.yaml`:
 
-
-## Usage
-
-To use the components of the `principle_utils` package, simply import the desired class or function into your Dart file. For example:
-
-```dart
-final double width = context.screenWidth ;
+```yaml
+dependencies:
+  principle_utils: latest_version
+```
 ```
 
-## Modules
+Then, run:
 
-The `principle_utils` package is organized into the following modules:
+```sh
+dart pub get
+```
 
-* **custom_colors:** Contains the custom color palette used at Principle.
-* **extensions:** Provides Dart extension functions for various classes.
-* **sizing:** Includes utilities for managing dimensions and spacing.
-* **types:** Defines common type definitions and aliases.
+## Features
+
+### Fluent Text Styling
+
+Enhance `TextStyle` with chainable extensions for declarative styling.
+
+#### Example:
+
+```dart
+Text(
+  'Hello, Flutter!',
+  style: const TextStyle().bold.size(20).textColor(Colors.blue).underline,
+);
+```
+
+### Duration Extensions
+
+Convert numeric values to `Duration` objects using a fluent API.
+
+#### Example:
+
+```dart
+final duration = 3.5.seconds; // 3 seconds and 500 milliseconds
+```
+
+### Random Utilities
+
+A global `Random` instance with extensions for random number generation, booleans, angles, and colors.
+
+#### Example:
+
+```dart
+final randomValue = rnd.getInt(1, 10); // Random integer between 1 and 9
+final randomColor = rnd.getColor(); // Random color
+```
+
+### Platform Detection
+
+Easily determine the current platform type.
+
+#### Example:
+
+```dart
+if (PlatformDevice.isMobile) {
+  print("Running on a mobile device");
+}
+```
+
+### Data State Management
+
+A base class for handling data and error states.
+
+#### Example:
+
+```dart
+DataState<String, int> state = DataSuccess(42);
+if (state.isSuccess) {
+  print("Success: ${state.data}");
+}
+```
+
+### Standardized UI Values
+
+#### Spacing Constants:
+Predefined spacing values for consistent padding and margins.
+
+```dart
+Container(padding: EdgeInsets.all(TWSpace.sp16));
+```
+
+#### Size Constants:
+Standardized UI dimensions.
+
+```dart
+Container(width: TWSize.s32);
+```
+
+#### Font Sizes:
+Consistent typography sizes.
+
+```dart
+TextStyle(fontSize: TWFontSize.textBaseFontSize);
+```
+
+#### Elevation Levels:
+Predefined elevation values for consistent shadow effects.
+
+```dart
+Material(elevation: TWElevation.e10);
+```
 
 ## Contributing
 
-Contributions to the `principle_utils` package are welcome! If you have a utility class, extension function, or custom view that you think would be beneficial, feel free to submit a pull request. Please ensure that your code follows the project's coding style and includes proper documentation.
+Contributions are welcome! Feel free to submit a pull request or open an issue.
 
 ## License
 
-This package is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+This project is licensed under the MIT License.
+```
+

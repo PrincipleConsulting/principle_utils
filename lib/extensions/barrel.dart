@@ -1,3 +1,4 @@
+export 'color_map.dart';
 export 'fluent_text.dart';
 export 'num_duration.dart';
 export 'random.dart';
