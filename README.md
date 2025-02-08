@@ -1,4 +1,3 @@
-```markdown
 # Principle Utils
 
 A Dart utility package containing custom colors, extensions, sizing utilities, and common types for Principle projects.
@@ -125,5 +124,5 @@ Contributions are welcome! Feel free to submit a pull request or open an issue.
 ## License
 
 This project is licensed under the MIT License.
-```
+
 
