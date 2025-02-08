@@ -16,17 +16,30 @@ import 'package:flutter/cupertino.dart';
 /// ```
 extension SizeContext on BuildContext {
   // Predefined base screen dimensions for scaling calculations.
-  static const double _baseWidth = 435;
-  static const double _baseHeight = 845;
+  // IPHONE 16 Pro dimensions
+  static const double _baseWidth = 402;
+  static const double _baseHeight = 874;
 
   // Logical pixels per centimeter for physical size calculations.
   static const double _cmPerLogicalPx = 38;
 
+  /// Gets the predefined base screen height.
+  double get baseHeight => _baseHeight;
+
   /// Gets the predefined base screen width.
   double get baseWidth => _baseWidth;
 
-  /// Gets the predefined base screen height.
-  double get baseHeight => _baseHeight;
+  /// Gets the minimum dimension of the base screen.
+  double get baseMin => min(_baseWidth, _baseHeight);
+
+  /// Gets the maximum dimension of the base screen.
+  double get baseMax => max(_baseWidth, _baseHeight);
+
+  /// Gets the aspect ratio of the base screen (width/height).
+  double get baseRatio => _baseWidth / _baseHeight;
+
+  /// Gets the diagonal size of the base screen in logical pixels.
+  double get baseDiagonal => sqrt((_baseWidth * _baseWidth) + (_baseHeight * _baseHeight));
 
   /// Determines if the screen orientation is landscape.
   bool get isLandscape => screenSize.width > screenSize.height;
@@ -34,11 +47,11 @@ extension SizeContext on BuildContext {
   /// Gets the screen size in logical pixels.
   Size get screenSize => MediaQuery.sizeOf(this);
 
-  /// Gets the screen width in logical pixels.
-  double get screenWidth => screenSize.width;
-
   /// Gets the screen height in logical pixels.
   double get screenHeight => screenSize.height;
+
+  /// Gets the screen width in logical pixels.
+  double get screenWidth => screenSize.width;
 
   /// Gets the diagonal screen size in logical pixels.
   double get screenDiagonal {
@@ -68,52 +81,72 @@ extension SizeContext on BuildContext {
   /// Gets the diagonal screen size in centimeters.
   double get diagonalCM => screenDiagonal / _cmPerLogicalPx;
 
-  /// Gets the diagonal size of the base screen in logical pixels.
-  double get baseDiagonal => sqrt((_baseWidth * _baseWidth) + (_baseHeight * _baseHeight));
+  /// Scales the screen width relative to the base height.
+  ///
+  /// [baseHeight] allows an optional base height to be provided; Otherwise, the base height [_baseHeight] is used.]
+  /// If [curve] is provided, the scaling is transformed using the specified curve.
+  double scaleBaseHeight({double? baseHeight, Curve? curve}) {
+    baseHeight ??= _baseHeight;
+    if (curve == null) {
+      return (screenHeight) / (baseHeight);
+    }
+    final scale = (screenHeight) / (baseHeight);
+    return curve.transform(scale % 1) + scale.floorToDouble();
+  }
 
   /// Scales the screen width relative to the base width.
   ///
-  /// [diff] allows an optional adjustment to the screen width.
+  /// [baseWidth] allows an optional base width to be provided.
   /// If [curve] is provided, the scaling is transformed using the specified curve.
-  double scaleBaseWidth({double diff = 0, Curve? curve}) {
+  double scaleBaseWidth({double? baseWidth, Curve? curve}) {
+    baseWidth ??= _baseWidth;
     if (curve == null) {
-      return (screenWidth - diff) / (_baseWidth);
+      return (screenWidth) / (baseWidth);
     }
-    final scale = (screenWidth - diff) / (_baseWidth);
+    final scale = (screenWidth) / (baseWidth);
     return curve.transform(scale % 1) + scale.floorToDouble();
   }
-
-  /// Scales the screen height relative to the base height.
-  ///
-  /// [diff] allows an optional adjustment to the screen height.
-  /// [hasAppBar] and [hasBottomBar] add offsets for typical UI elements.
-  /// If [curve] is provided, the scaling is transformed using the specified curve.
-  double scaleBaseHeight({double diff = 0, bool? hasAppBar, bool? hasBottomBar, Curve? curve}) {
-    if (hasAppBar == true) {
-      diff += 56; // Default app bar height
-    }
-    if (hasBottomBar == true) {
-      diff += 56; // Default bottom bar height
-    }
-    if (curve == null) {
-      return (screenHeight - diff) / (_baseHeight);
-    }
-
-    final scale = (screenHeight - diff) / (_baseHeight);
-    return curve.transform(scale % 1) + scale.floorToDouble();
-  }
-
-  /// Scales the diagonal screen size relative to the base diagonal.
-  double get scaleBaseDiagonal => screenDiagonal / baseDiagonal;
 
   /// Scales the diagonal screen size relative to the base diagonal using a curve.
   ///
+  /// [baseDiagonal] allows an optional base diagonal to be provided. Otherwise, the base diagonal [_baseDiagonal] is used.
   /// If [curve] is provided, the scaling is transformed using the specified curve.
-  double scaleBaseDiagonalWithCurve({Curve? curve}) {
-    final scale = screenDiagonal / baseDiagonal;
+  double scaleBaseDiagonal({double? baseDiagonal, Curve? curve}) {
+    baseDiagonal ??= this.baseDiagonal;
     if (curve == null) {
-      return scale;
+      return screenDiagonal / baseDiagonal;
     }
+    final scale = screenDiagonal / baseDiagonal;
+    return curve.transform(scale % 1) + scale.floorToDouble();
+  }
+
+  /// Minimum scale of the screen relative to the base width and height.
+  ///
+  /// [baseHeight] allows an optional base height to be provided. Otherwise, the base height [_baseHeight] is used.
+  /// [baseWidth] allows an optional base width to be provided. Otherwise, the base width [_baseWidth] is used.
+  /// If [curve] is provided, the scaling is transformed using the specified curve.
+  double scaleBaseMin({double? baseHeight, double? baseWidth, Curve? curve}) {
+    baseHeight ??= this.baseHeight;
+    baseWidth ??= this.baseWidth;
+    if (curve == null) {
+      return min(scaleBaseWidth(baseWidth: baseWidth), scaleBaseHeight(baseHeight: baseHeight));
+    }
+    final scale = min(scaleBaseWidth(baseWidth: baseWidth), scaleBaseHeight(baseHeight: baseHeight));
+    return curve.transform(scale % 1) + scale.floorToDouble();
+  }
+
+  /// Maximum scale of the screen relative to the base width and height.
+  ///
+  /// [baseHeight] allows an optional base height to be provided. Otherwise, the base height [_baseHeight] is used.
+  /// [baseWidth] allows an optional base width to be provided. Otherwise, the base width [_baseWidth] is used.
+  /// [curve] allows an optional curve to be provided for scaling.
+  double scaleBaseMax({double? baseHeight, double? baseWidth, Curve? curve}) {
+    baseHeight ??= this.baseHeight;
+    baseWidth ??= this.baseWidth;
+    if (curve == null) {
+      return max(scaleBaseWidth(baseWidth: baseWidth), scaleBaseHeight(baseHeight: baseHeight));
+    }
+    final scale = max(scaleBaseWidth(baseWidth: baseWidth), scaleBaseHeight(baseHeight: baseHeight));
     return curve.transform(scale % 1) + scale.floorToDouble();
   }
 }
