@@ -1,6 +1,8 @@
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 
+const String kCompleteValidHexPattern = r'^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$';
+
 // Extension for String
 extension StringToColorExtension on String {
   Color? toColor() {
@@ -99,7 +101,6 @@ String _padRadix(int value) => value.toRadixString(16).padLeft(2, '0');
 /// ```
 /// Reference: https://en.wikipedia.org/wiki/Web_colors#Hex_triplet
 Color? _colorFromHex(String inputString) {
-  const String kCompleteValidHexPattern = r'^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$';
   // Registers validator for exactly 6 or 8 digits long HEX (with optional #).
   final RegExp hexValidator = RegExp(kCompleteValidHexPattern);
   // Validating input, if it does not match — it's not proper HEX.
@@ -123,7 +124,6 @@ Color? _colorFromHex(String inputString) {
 }
 
 bool _isStringColor(String inputString) {
-  const String kCompleteValidHexPattern = r'^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$';
   // Registers validator for exactly 6 or 8 digits long HEX (with optional #).
   final RegExp hexValidator = RegExp(kCompleteValidHexPattern);
   // Validating input, if it does not match — it's not proper HEX.
