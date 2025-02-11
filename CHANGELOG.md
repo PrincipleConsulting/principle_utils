@@ -1,3 +1,10 @@
+
+## 0.1.3
+* Added stringify extension, and color extension
+
+## 0.0.3
+* refactored a couple libraries
+
 ## 0.0.2
 
 * Added documentation
