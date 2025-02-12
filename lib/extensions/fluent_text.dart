@@ -190,13 +190,13 @@ extension FluentTextExtension on TextStyle {
   TextStyle textFeatures(List<FontFeature> features) => copyWith(fontFeatures: features);
 
   /// Configures text overflow handling
-  TextStyle overflow(TextOverflow overflow) => copyWith(overflow: overflow);
+  TextStyle textOverflow(TextOverflow overflow) => copyWith(overflow: overflow);
 
   /// Sets vertical leading distribution
   ///
   /// Affects how additional vertical space is distributed
   /// above/below the text baseline
-  TextStyle leadingDistribution(TextLeadingDistribution distribution) => copyWith(leadingDistribution: distribution);
+  TextStyle textLeadingDist(TextLeadingDistribution distribution) => copyWith(leadingDistribution: distribution);
 
   //----------------------------------------------------------------------------
   // Font configuration methods
@@ -206,16 +206,16 @@ extension FluentTextExtension on TextStyle {
   TextStyle textFontFamily(String family) => copyWith(fontFamily: family);
 
   /// Sets ordered list of fallback font families
-  TextStyle fontFamilyFallback(List<String> fallback) => copyWith(fontFamilyFallback: fallback);
+  TextStyle textFontFamilyFallback(List<String> fallback) => copyWith(fontFamilyFallback: fallback);
 
   /// Sets variable font variations
-  TextStyle fontVariations(List<FontVariation> variations) => copyWith(fontVariations: variations);
+  TextStyle textFontVariations(List<FontVariation> variations) => copyWith(fontVariations: variations);
 
   /// Controls inheritance of parent text style properties
   ///
   /// When [inherit] is true (default), unresolved properties cascade from
   /// ancestor text styles
-  TextStyle inherit(bool inherit) => copyWith(inherit: inherit);
+  TextStyle textInherit(bool inherit) => copyWith(inherit: inherit);
 
   //----------------------------------------------------------------------------
   // Decoration styling methods
@@ -224,13 +224,13 @@ extension FluentTextExtension on TextStyle {
   /// Sets text decoration color
   ///
   /// Defaults to current text color when null
-  TextStyle decorationColor(Color color) => copyWith(decorationColor: color);
+  TextStyle textDecorationColor(Color color) => copyWith(decorationColor: color);
 
   /// Sets text decoration line style
-  TextStyle decorationStyle(TextDecorationStyle style) => copyWith(decorationStyle: style);
+  TextStyle textDecorationStyle(TextDecorationStyle style) => copyWith(decorationStyle: style);
 
   /// Sets text decoration line thickness
   ///
   /// Thickness is multiplied by the font size
-  TextStyle decorationThickness(double thickness) => copyWith(decorationThickness: thickness);
+  TextStyle textDecorationThickness(double thickness) => copyWith(decorationThickness: thickness);
 }

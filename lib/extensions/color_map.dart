@@ -31,7 +31,7 @@ extension ColorToStringExtension on Color {
 }
 
 // Shorthand for padLeft of RadixString, DRY.
-String _padRadix(int value) => value.toRadixString(16).padLeft(2, '0');
+String _padRadix(int value) => value.toRadixString(16);
 
 /// [RegExp] pattern for validation complete HEX color [String], allows only:
 ///
@@ -105,7 +105,7 @@ Color? _colorFromHex(String inputString) {
   final RegExp hexValidator = RegExp(kCompleteValidHexPattern);
   // Validating input, if it does not match — it's not proper HEX.
   if (!hexValidator.hasMatch(inputString)) {
-    return null;
+    throw FormatException('Invalid HEX color: $inputString');
   }
   // Remove # if included in input.
   String hexString = inputString.replaceFirst('#', '').toUpperCase();
@@ -114,11 +114,11 @@ Color? _colorFromHex(String inputString) {
   if (hexString.length == 6) {
     hexString = 'FF$hexString';
   } else if (hexString.length == 3) {
-    hexString = hexString.split('').expand((i) => [i * 2]).join();
+    hexString = 'FF${hexString.split('').expand((String i) => <String>[i * 2]).join()}';
   }
 
   // turns String into int. to be used in Color constructor.
-  final intColorValue = int.tryParse(hexString, radix: 16)!;
+  final int intColorValue = int.tryParse(hexString, radix: 16)!;
 
   return Color(intColorValue);
 }
@@ -137,10 +137,10 @@ String _toHexString(
   bool toUpperCase = true,
 }) {
   final String hex = (includeHashSign ? '#' : '') +
-      (enableAlpha ? _padRadix(color.a.toInt()) : '') +
-      _padRadix(color.r.toInt()) +
-      _padRadix(color.g.toInt()) +
-      _padRadix(color.b.toInt());
+      (enableAlpha ? _padRadix((color.a * 255).toInt()) : '') +
+      _padRadix((color.r * 255).toInt()) +
+      _padRadix((color.g * 255).toInt()) +
+      _padRadix((color.b * 255).toInt());
 
   return toUpperCase ? hex.toUpperCase() : hex;
 }

@@ -132,7 +132,7 @@ extension SizeContext on BuildContext {
     if (curve == null) {
       return screenHeight / baseHeight;
     }
-    final scale = screenHeight / baseHeight;
+    final double scale = screenHeight / baseHeight;
     return curve.transform(scale % 1) + scale.floorToDouble();
   }
 
@@ -150,7 +150,7 @@ extension SizeContext on BuildContext {
     if (curve == null) {
       return screenWidth / baseWidth;
     }
-    final scale = screenWidth / baseWidth;
+    final double scale = screenWidth / baseWidth;
     return curve.transform(scale % 1) + scale.floorToDouble();
   }
 
@@ -167,7 +167,7 @@ extension SizeContext on BuildContext {
     if (curve == null) {
       return screenDiagonal / baseDiagonal;
     }
-    final scale = screenDiagonal / baseDiagonal;
+    final double scale = screenDiagonal / baseDiagonal;
     return curve.transform(scale % 1) + scale.floorToDouble();
   }
 
@@ -186,7 +186,7 @@ extension SizeContext on BuildContext {
     if (curve == null) {
       return min(scaleBaseWidth(baseWidth: baseWidth), scaleBaseHeight(baseHeight: baseHeight));
     }
-    final scale = min(scaleBaseWidth(baseWidth: baseWidth), scaleBaseHeight(baseHeight: baseHeight));
+    final double scale = min(scaleBaseWidth(baseWidth: baseWidth), scaleBaseHeight(baseHeight: baseHeight));
     return curve.transform(scale % 1) + scale.floorToDouble();
   }
 
@@ -205,7 +205,7 @@ extension SizeContext on BuildContext {
     if (curve == null) {
       return max(scaleBaseWidth(baseWidth: baseWidth), scaleBaseHeight(baseHeight: baseHeight));
     }
-    final scale = max(scaleBaseWidth(baseWidth: baseWidth), scaleBaseHeight(baseHeight: baseHeight));
+    final double scale = max(scaleBaseWidth(baseWidth: baseWidth), scaleBaseHeight(baseHeight: baseHeight));
     return curve.transform(scale % 1) + scale.floorToDouble();
   }
 }
