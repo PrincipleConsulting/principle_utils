@@ -6,10 +6,13 @@ A Dart utility package containing custom colors, extensions, sizing utilities, a
 
 This package provides a set of helpful utilities to streamline Flutter development for Principle projects. It includes:
 
-* **Custom Colors:** A set of color definitions widely used at Principle, ensuring brand consistency across projects.
-* **Extensions:** Dart extension functions for various classes, simplifying common operations and improving code readability.
-* **Sizing:** Utilities for managing dimensions and spacing in your layouts, promoting a unified visual style.
-* **Types:** Common type definitions and aliases, enhancing code clarity and maintainability.
+- **Extensions:** Dart extension functions that simplify common operations and improve code readability.
+    - Screen Utilities
+    - Base Dimensions
+- **Sizing:** Utilities for managing dimensions and spacing in layouts, promoting a unified visual style.
+- **Custom Colors:** A set of predefined colors ensuring brand consistency across projects.
+- **Types:** Common type definitions and aliases, enhancing code clarity and maintainability.
+- **Platform Device Detection:** A set of helpers to identify the current platform.
 
 ## Installation
 
@@ -28,93 +31,136 @@ dart pub get
 
 ## Features
 
-### Fluent Text Styling
+### Extensions
 
-Enhance `TextStyle` with chainable extensions for declarative styling.
+Enhance your Flutter code with useful extensions:
 
-#### Example:
+- **Screen Utilities:** Access screen dimensions, orientation, and scaling factors.
+
+  ```dart
+  double widthFraction = context.widthPct(0.5); // 50% of the screen width
+  double scaledHeight = context.scaleBaseHeight(); // Scale height relative to base
+  double scaledWidth = context.scaleBaseWidth(); // Scale width relative to base
+  bool isLandscape = context.isLandscape; // Check if in landscape mode
+  ```
+
+- **Base Dimensions:** Use predefined base dimensions for consistent scaling.
+
+  ```dart
+  const double baseWidth = 375.0;
+  const double baseHeight = 812.0;
+  ```
+
+- **Fluent Text Styling:** Chain methods for styling text.
+
+  ```dart
+  Text(
+    'Hello, Flutter!',
+    style: const TextStyle().bold.size(20).textColor(Colors.blue).underline,
+  );
+  ```
+
+- **Duration Extensions:** Convert numeric values into `Duration` objects.
+
+  ```dart
+  final duration = 3.5.seconds; // 3 seconds and 500 milliseconds
+  ```
+
+- **Random Utilities:** Generate random numbers, booleans, angles, and colors.
+
+  ```dart
+  final randomValue = rnd.getInt(1, 10); // Random integer between 1 and 9
+  final randomColor = rnd.getColor(); // Random color
+  ```
+
+### Sizing
+
+Improve your responsive layouts with screen and sizing utilities:
+
+- **Standardized UI Values:** Maintain consistency in spacing, sizing, typography, and elevation.
+
+    - **Spacing Constants:**
+      ```dart
+      Container(padding: EdgeInsets.all(TWSpace.sp16));
+      ```
+
+    - **Size Constants:**
+      ```dart
+      Container(width: TWSize.s32);
+      ```
+
+    - **Font Sizes:**
+      ```dart
+      TextStyle(fontSize: TWFontSize.textBaseFontSize);
+      ```
+
+    - **Elevation Levels:**
+      ```dart
+      Material(elevation: TWElevation.e10);
+      ```
+
+### Custom Colors
+
+Maintain brand consistency with predefined custom colors:
 
 ```dart
-Text(
-  'Hello, Flutter!',
-  style: const TextStyle().bold.size(20).textColor(Colors.blue).underline,
-);
+Color primaryColor = PrincipleColors.primary;
+Color accentColor = PrincipleColors.accent;
 ```
 
-### Duration Extensions
+### Types
 
-Convert numeric values to `Duration` objects using a fluent API.
+Enhance code clarity with common type definitions and data management utilities:
 
-#### Example:
+- **Data State Management:** Handle data and error states effectively.
 
-```dart
-final duration = 3.5.seconds; // 3 seconds and 500 milliseconds
-```
+  ```dart
+  DataState<String, int> state = DataSuccess(42);
+  if (state.isSuccess) {
+    print("Success: \${state.data}");
+  }
+  ```
 
-### Random Utilities
+- **Additional Type Aliases:** Utilize custom types to improve readability and maintainability.
 
-A global `Random` instance with extensions for random number generation, booleans, angles, and colors.
+    - **UseCase:** A standard structure for implementing use cases.
 
-#### Example:
+      ```dart
+      // Example usage
+      class GetUserDetailsUseCase extends UseCase<User, int> {
+        @override
+        Future<User> call({int? params}) async {
+          return User(id: params, name: "John Doe");
+        }
+      }
+      ```
 
-```dart
-final randomValue = rnd.getInt(1, 10); // Random integer between 1 and 9
-final randomColor = rnd.getColor(); // Random color
-```
+    - **Tuple:** A tuple with two elements.
 
-### Platform Detection
+      ```dart 
+      // Example usage
+      Tuple<int, String> pair = (first: 42, last: 'Hello');
+      print(pair.first); // 42
+      print(pair.last); // 'Hello'
+      ```
 
-Easily determine the current platform type.
+    - **KeyValuePair:** A key-value pair structure.
 
-#### Example:
+      ```dart
+      // Example usage
+      KeyValuePair<int> pair = (key: 'age', val: 25);
+      print(pair.key); // 'age'
+      print(pair.val); // 25
+      ```
+
+### Platform Device Detection
+
+Easily detect the current platform to tailor your UI:
 
 ```dart
 if (PlatformDevice.isMobile) {
   print("Running on a mobile device");
 }
-```
-
-### Data State Management
-
-A base class for handling data and error states.
-
-#### Example:
-
-```dart
-DataState<String, int> state = DataSuccess(42);
-if (state.isSuccess) {
-  print("Success: ${state.data}");
-}
-```
-
-### Standardized UI Values
-
-#### Spacing Constants:
-Predefined spacing values for consistent padding and margins.
-
-```dart
-Container(padding: EdgeInsets.all(TWSpace.sp16));
-```
-
-#### Size Constants:
-Standardized UI dimensions.
-
-```dart
-Container(width: TWSize.s32);
-```
-
-#### Font Sizes:
-Consistent typography sizes.
-
-```dart
-TextStyle(fontSize: TWFontSize.textBaseFontSize);
-```
-
-#### Elevation Levels:
-Predefined elevation values for consistent shadow effects.
-
-```dart
-Material(elevation: TWElevation.e10);
 ```
 
 ## Contributing
@@ -124,5 +170,4 @@ Contributions are welcome! Feel free to submit a pull request or open an issue.
 ## License
 
 This project is licensed under the MIT License.
-
 
