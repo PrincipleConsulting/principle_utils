@@ -145,19 +145,24 @@ extension RandomExtensions on Random {
   /// ```
   Color getColor({
     double? opacity,
+    double minOpacity = 1.0,
+    double maxOpacity = 1.0,
     double? hue,
+    double hueRange = 0.0,
+    double minHue = 0.0,
+    double maxHue = 360.0,
     double? saturation,
+    double minSaturation = 0.0,
+    double maxSaturation = 1.0,
     double? lightness,
+    double minLightness = 0.0,
+    double maxLightness = 1.0,
   }) {
-    const double minOpacity = 1.0;
-    const double maxOpacity = 1.0;
-    const double minSaturation = 0.0;
-    const double maxSaturation = 1.0;
-    const double minLightness = 0.0;
-    const double maxLightness = 1.0;
-
-    final double minHue = (hue ?? 0.0) % 360;
-    final double maxHue = (hue ?? 360) % 360;
+    minHue = (hue == null ? minHue : hue - hueRange) % 360;
+    maxHue = (hue == null ? maxHue : hue + hueRange) % 360;
+    if (minHue > maxHue) {
+      minHue -= 360;
+    }
 
     return HSLColor.fromAHSL(opacity ?? getDouble(minOpacity, maxOpacity), getDouble(minHue, maxHue) % 360,
             saturation ?? getDouble(minSaturation, maxSaturation), lightness ?? getDouble(minLightness, maxLightness))

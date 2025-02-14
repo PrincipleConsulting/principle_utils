@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">94.1&nbsp;%</td>
             <td class="headerCovTableEntry">34</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">32</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2025-02-11 23:34:58</td>
+            <td class="headerValue">2025-02-13 22:53:57</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -70,18 +70,18 @@
 <span id="L8"><span class="lineNum">       8</span>              : ///</span>
 <span id="L9"><span class="lineNum">       9</span>              : /// Initialized with a seed based on the current time in milliseconds since epoch.</span>
 <span id="L10"><span class="lineNum">      10</span>              : /// Use [rndSeed] to get or set the seed for reproducible randomness.</span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaUNC">           0 : Random rnd = Random(_seed);</span></span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC tlaBgGNC">           1 : Random rnd = Random(_seed);</span></span>
 <span id="L12"><span class="lineNum">      12</span>              : </span>
 <span id="L13"><span class="lineNum">      13</span>              : /// Updates the seed for the global [Random] instance.</span>
 <span id="L14"><span class="lineNum">      14</span>              : ///</span>
-<span id="L15"><span class="lineNum">      15</span>              : /// Setting a new seed reinitializes the [rnd] instance, ensuring reproducible</span>
+<span id="L15"><span class="lineNum">      15</span>              : /// Setting a new seed reinitialized the [rnd] instance, ensuring reproducible</span>
 <span id="L16"><span class="lineNum">      16</span>              : /// random sequences for testing or debugging.</span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC">           0 : set rndSeed(int seed) =&gt; rnd = Random(_seed = seed);</span></span>
+<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           2 : set rndSeed(int seed) =&gt; rnd = Random(_seed = seed);</span></span>
 <span id="L18"><span class="lineNum">      18</span>              : </span>
 <span id="L19"><span class="lineNum">      19</span>              : /// Retrieves the current seed of the global [Random] instance.</span>
 <span id="L20"><span class="lineNum">      20</span>              : ///</span>
 <span id="L21"><span class="lineNum">      21</span>              : /// Useful for debugging or reproducing random sequences.</span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC">           0 : int get rndSeed =&gt; _seed;</span></span>
+<span id="L22"><span class="lineNum">      22</span> <span class="tlaUNC tlaBgUNC">           0 : int get rndSeed =&gt; _seed;</span></span>
 <span id="L23"><span class="lineNum">      23</span>              : </span>
 <span id="L24"><span class="lineNum">      24</span>              : /// Extensions for the [Random] class to simplify and extend random value generation.</span>
 <span id="L25"><span class="lineNum">      25</span>              : ///</span>
@@ -101,12 +101,12 @@
 <span id="L39"><span class="lineNum">      39</span>              :   /// rnd(10.0); // Random double between 0.0 and 10.0</span>
 <span id="L40"><span class="lineNum">      40</span>              :   /// rnd(5.0, 15.0); // Random double between 5.0 and 15.0</span>
 <span id="L41"><span class="lineNum">      41</span>              :   /// ```</span>
-<span id="L42"><span class="lineNum">      42</span> <span class="tlaUNC">           0 :   double call([double? min, double? max]) {</span></span>
+<span id="L42"><span class="lineNum">      42</span> <span class="tlaGNC tlaBgGNC">           1 :   double call([double? min, double? max]) {</span></span>
 <span id="L43"><span class="lineNum">      43</span>              :     if (max == null) {</span>
 <span id="L44"><span class="lineNum">      44</span>              :       max = min ?? 1.0;</span>
 <span id="L45"><span class="lineNum">      45</span>              :       min = 0.0;</span>
 <span id="L46"><span class="lineNum">      46</span>              :     }</span>
-<span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC">           0 :     return getDouble(min!, max);</span></span>
+<span id="L47"><span class="lineNum">      47</span> <span class="tlaGNC">           1 :     return getDouble(min!, max);</span></span>
 <span id="L48"><span class="lineNum">      48</span>              :   }</span>
 <span id="L49"><span class="lineNum">      49</span>              : </span>
 <span id="L50"><span class="lineNum">      50</span>              :   /// Generates a random `int` within a range, optionally influenced by a [Curve].</span>
@@ -119,8 +119,8 @@
 <span id="L57"><span class="lineNum">      57</span>              :   /// rnd.getInt(1, 10); // Random integer between 1 and 9</span>
 <span id="L58"><span class="lineNum">      58</span>              :   /// rnd.getInt(1, 10, curve: Curves.easeIn); // Skewed distribution</span>
 <span id="L59"><span class="lineNum">      59</span>              :   /// ```</span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC">           0 :   int getInt(int min, int max, {Curve? curve}) {</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaUNC">           0 :     return curve == null ? min + nextInt(max - min) : getDouble(min * 1.0, max * 1.0, curve: curve).toInt();</span></span>
+<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC">           1 :   int getInt(int min, int max, {Curve? curve}) {</span></span>
+<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           3 :     return curve == null ? min + nextInt(max - min) : getDouble(min * 1.0, max * 1.0, curve: curve).toInt();</span></span>
 <span id="L62"><span class="lineNum">      62</span>              :   }</span>
 <span id="L63"><span class="lineNum">      63</span>              : </span>
 <span id="L64"><span class="lineNum">      64</span>              :   /// Generates a random `double` within a range, optionally influenced by a [Curve].</span>
@@ -133,8 +133,8 @@
 <span id="L71"><span class="lineNum">      71</span>              :   /// rnd.getDouble(1.0, 10.0); // Random double between 1.0 and 10.0</span>
 <span id="L72"><span class="lineNum">      72</span>              :   /// rnd.getDouble(1.0, 10.0, curve: Curves.easeOut); // Skewed distribution</span>
 <span id="L73"><span class="lineNum">      73</span>              :   /// ```</span>
-<span id="L74"><span class="lineNum">      74</span> <span class="tlaUNC">           0 :   double getDouble(double min, double max, {Curve? curve}) {</span></span>
-<span id="L75"><span class="lineNum">      75</span> <span class="tlaUNC">           0 :     return curve == null ? min + nextDouble() * (max - min) : min + curve.transform(nextDouble()) * (max - min);</span></span>
+<span id="L74"><span class="lineNum">      74</span> <span class="tlaGNC">           1 :   double getDouble(double min, double max, {Curve? curve}) {</span></span>
+<span id="L75"><span class="lineNum">      75</span> <span class="tlaGNC">           4 :     return curve == null ? min + nextDouble() * (max - min) : min + curve.transform(nextDouble()) * (max - min);</span></span>
 <span id="L76"><span class="lineNum">      76</span>              :   }</span>
 <span id="L77"><span class="lineNum">      77</span>              : </span>
 <span id="L78"><span class="lineNum">      78</span>              :   //----------------------------------------------------------------------------</span>
@@ -149,7 +149,7 @@
 <span id="L87"><span class="lineNum">      87</span>              :   /// rnd.getBool(); // 50% chance of true</span>
 <span id="L88"><span class="lineNum">      88</span>              :   /// rnd.getBool(0.8); // 80% chance of true</span>
 <span id="L89"><span class="lineNum">      89</span>              :   /// ```</span>
-<span id="L90"><span class="lineNum">      90</span> <span class="tlaUNC">           0 :   bool getBool([double chance = 0.5]) =&gt; nextDouble() &lt; chance;</span></span>
+<span id="L90"><span class="lineNum">      90</span> <span class="tlaGNC">           3 :   bool getBool([double chance = 0.5]) =&gt; nextDouble() &lt; chance;</span></span>
 <span id="L91"><span class="lineNum">      91</span>              : </span>
 <span id="L92"><span class="lineNum">      92</span>              :   /// Returns a random bit (0 or 1) with a specified probability for `1`.</span>
 <span id="L93"><span class="lineNum">      93</span>              :   ///</span>
@@ -159,7 +159,7 @@
 <span id="L97"><span class="lineNum">      97</span>              :   /// rnd.getBit(); // 50% chance of 1</span>
 <span id="L98"><span class="lineNum">      98</span>              :   /// rnd.getBit(0.3); // 30% chance of 1</span>
 <span id="L99"><span class="lineNum">      99</span>              :   /// ```</span>
-<span id="L100"><span class="lineNum">     100</span> <span class="tlaUNC">           0 :   int getBit([double chance = 0.5]) =&gt; nextDouble() &lt; chance ? 1 : 0;</span></span>
+<span id="L100"><span class="lineNum">     100</span> <span class="tlaGNC">           3 :   int getBit([double chance = 0.5]) =&gt; nextDouble() &lt; chance ? 1 : 0;</span></span>
 <span id="L101"><span class="lineNum">     101</span>              : </span>
 <span id="L102"><span class="lineNum">     102</span>              :   /// Returns a random sign (-1 or 1) with a specified probability for `1`.</span>
 <span id="L103"><span class="lineNum">     103</span>              :   ///</span>
@@ -169,7 +169,7 @@
 <span id="L107"><span class="lineNum">     107</span>              :   /// rnd.getSign(); // 50% chance of 1</span>
 <span id="L108"><span class="lineNum">     108</span>              :   /// rnd.getSign(0.7); // 70% chance of 1</span>
 <span id="L109"><span class="lineNum">     109</span>              :   /// ```</span>
-<span id="L110"><span class="lineNum">     110</span> <span class="tlaUNC">           0 :   int getSign([double chance = 0.5]) =&gt; nextDouble() &lt; chance ? 1 : -1;</span></span>
+<span id="L110"><span class="lineNum">     110</span> <span class="tlaGNC">           4 :   int getSign([double chance = 0.5]) =&gt; nextDouble() &lt; chance ? 1 : -1;</span></span>
 <span id="L111"><span class="lineNum">     111</span>              : </span>
 <span id="L112"><span class="lineNum">     112</span>              :   //----------------------------------------------------------------------------</span>
 <span id="L113"><span class="lineNum">     113</span>              :   // Random Angle Generation</span>
@@ -180,14 +180,14 @@
 <span id="L118"><span class="lineNum">     118</span>              :   /// ```dart</span>
 <span id="L119"><span class="lineNum">     119</span>              :   /// rnd.getDeg(); // Random angle between 0° and 360°</span>
 <span id="L120"><span class="lineNum">     120</span>              :   /// ```</span>
-<span id="L121"><span class="lineNum">     121</span> <span class="tlaUNC">           0 :   double getDeg() =&gt; nextDouble() * 360.0;</span></span>
+<span id="L121"><span class="lineNum">     121</span> <span class="tlaGNC">           3 :   double getDeg() =&gt; nextDouble() * 360.0;</span></span>
 <span id="L122"><span class="lineNum">     122</span>              : </span>
 <span id="L123"><span class="lineNum">     123</span>              :   /// Generates a random angle in radians (0 to 2π).</span>
 <span id="L124"><span class="lineNum">     124</span>              :   ///</span>
 <span id="L125"><span class="lineNum">     125</span>              :   /// ```dart</span>
 <span id="L126"><span class="lineNum">     126</span>              :   /// rnd.getRad(); // Random angle between 0 and 2π</span>
 <span id="L127"><span class="lineNum">     127</span>              :   /// ```</span>
-<span id="L128"><span class="lineNum">     128</span> <span class="tlaUNC">           0 :   double getRad() =&gt; nextDouble() * pi * 2.0;</span></span>
+<span id="L128"><span class="lineNum">     128</span> <span class="tlaGNC">           4 :   double getRad() =&gt; nextDouble() * pi * 2.0;</span></span>
 <span id="L129"><span class="lineNum">     129</span>              : </span>
 <span id="L130"><span class="lineNum">     130</span>              :   //----------------------------------------------------------------------------</span>
 <span id="L131"><span class="lineNum">     131</span>              :   // Random Color Generation</span>
@@ -205,93 +205,92 @@
 <span id="L143"><span class="lineNum">     143</span>              :   /// rnd.getColor(hue: Hue.blue); // Random color with blue hue</span>
 <span id="L144"><span class="lineNum">     144</span>              :   /// rnd.getColor(opacity: 0.5, lightness: 0.8); // Semi-transparent pastel color</span>
 <span id="L145"><span class="lineNum">     145</span>              :   /// ```</span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaUNC">           0 :   Color getColor({</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           1 :   Color getColor({</span></span>
 <span id="L147"><span class="lineNum">     147</span>              :     double? opacity,</span>
-<span id="L148"><span class="lineNum">     148</span>              :     double? hue,</span>
-<span id="L149"><span class="lineNum">     149</span>              :     double? saturation,</span>
-<span id="L150"><span class="lineNum">     150</span>              :     double? lightness,</span>
-<span id="L151"><span class="lineNum">     151</span>              :   }) {</span>
-<span id="L152"><span class="lineNum">     152</span>              :     const double minOpacity = 1.0;</span>
-<span id="L153"><span class="lineNum">     153</span>              :     const double maxOpacity = 1.0;</span>
-<span id="L154"><span class="lineNum">     154</span>              :     const double minSaturation = 0.0;</span>
-<span id="L155"><span class="lineNum">     155</span>              :     const double maxSaturation = 1.0;</span>
-<span id="L156"><span class="lineNum">     156</span>              :     const double minLightness = 0.0;</span>
-<span id="L157"><span class="lineNum">     157</span>              :     const double maxLightness = 1.0;</span>
-<span id="L158"><span class="lineNum">     158</span>              : </span>
-<span id="L159"><span class="lineNum">     159</span>              :     const double hueRange = 0.0;</span>
-<span id="L160"><span class="lineNum">     160</span>              :     double minHue = 0.0;</span>
-<span id="L161"><span class="lineNum">     161</span>              :     double maxHue = 360.0;</span>
-<span id="L162"><span class="lineNum">     162</span>              : </span>
-<span id="L163"><span class="lineNum">     163</span> <span class="tlaUNC">           0 :     minHue = (hue == null ? minHue : hue - hueRange) % 360;</span></span>
-<span id="L164"><span class="lineNum">     164</span> <span class="tlaUNC">           0 :     maxHue = (hue == null ? maxHue : hue + hueRange) % 360;</span></span>
-<span id="L165"><span class="lineNum">     165</span> <span class="tlaUNC">           0 :     if (minHue &gt; maxHue) {</span></span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaUNC">           0 :       minHue -= 360;</span></span>
-<span id="L167"><span class="lineNum">     167</span>              :     }</span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaUNC">           0 :     return HSLColor.fromAHSL(opacity ?? getDouble(minOpacity, maxOpacity), getDouble(minHue, maxHue) % 360,</span></span>
-<span id="L169"><span class="lineNum">     169</span> <span class="tlaUNC">           0 :             saturation ?? getDouble(minSaturation, maxSaturation), lightness ?? getDouble(minLightness, maxLightness))</span></span>
-<span id="L170"><span class="lineNum">     170</span> <span class="tlaUNC">           0 :         .toColor();</span></span>
-<span id="L171"><span class="lineNum">     171</span>              :   }</span>
-<span id="L172"><span class="lineNum">     172</span>              : </span>
-<span id="L173"><span class="lineNum">     173</span>              :   //----------------------------------------------------------------------------</span>
-<span id="L174"><span class="lineNum">     174</span>              :   // Random List Operations</span>
-<span id="L175"><span class="lineNum">     175</span>              :   //----------------------------------------------------------------------------</span>
-<span id="L176"><span class="lineNum">     176</span>              : </span>
-<span id="L177"><span class="lineNum">     177</span>              :   /// Picks a random item from a list. Optionally removes it or skews selection with a [Curve].</span>
-<span id="L178"><span class="lineNum">     178</span>              :   ///</span>
-<span id="L179"><span class="lineNum">     179</span>              :   /// - [list]: The list to pick from.</span>
-<span id="L180"><span class="lineNum">     180</span>              :   /// - [curve]: Optional curve to skew the selection.</span>
-<span id="L181"><span class="lineNum">     181</span>              :   /// - [remove]: If `true`, removes the selected item from the list.</span>
-<span id="L182"><span class="lineNum">     182</span>              :   ///</span>
-<span id="L183"><span class="lineNum">     183</span>              :   /// ```dart</span>
-<span id="L184"><span class="lineNum">     184</span>              :   /// final list = [1, 2, 3, 4];</span>
-<span id="L185"><span class="lineNum">     185</span>              :   /// rnd.getItem(list); // Random item from the list</span>
-<span id="L186"><span class="lineNum">     186</span>              :   /// rnd.getItem(list, remove: true); // Removes and returns a random item</span>
-<span id="L187"><span class="lineNum">     187</span>              :   /// ```</span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaUNC">           0 :   T getItem&lt;T&gt;(List&lt;T&gt; list, {Curve? curve, bool remove = false}) {</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaUNC">           0 :     final int i = getInt(0, list.length, curve: curve);</span></span>
-<span id="L190"><span class="lineNum">     190</span> <span class="tlaUNC">           0 :     return remove ? list.removeAt(i) : list[i];</span></span>
-<span id="L191"><span class="lineNum">     191</span>              :   }</span>
-<span id="L192"><span class="lineNum">     192</span>              : </span>
-<span id="L193"><span class="lineNum">     193</span>              :   /// Randomizes the order of a list. Optionally creates a shuffled copy.</span>
-<span id="L194"><span class="lineNum">     194</span>              :   ///</span>
-<span id="L195"><span class="lineNum">     195</span>              :   /// - [list]: The list to shuffle.</span>
-<span id="L196"><span class="lineNum">     196</span>              :   /// - [copy]: If `true`, shuffles a copy of the list instead of the original.</span>
-<span id="L197"><span class="lineNum">     197</span>              :   ///</span>
-<span id="L198"><span class="lineNum">     198</span>              :   /// ```dart</span>
-<span id="L199"><span class="lineNum">     199</span>              :   /// final list = [1, 2, 3, 4];</span>
-<span id="L200"><span class="lineNum">     200</span>              :   /// rnd.shuffle(list); // Shuffles the original list</span>
-<span id="L201"><span class="lineNum">     201</span>              :   /// rnd.shuffle(list, copy: true); // Returns a shuffled copy</span>
-<span id="L202"><span class="lineNum">     202</span>              :   /// ```</span>
-<span id="L203"><span class="lineNum">     203</span> <span class="tlaUNC">           0 :   List&lt;T&gt; shuffle&lt;T&gt;(List&lt;T&gt; list, {bool copy = false}) {</span></span>
-<span id="L204"><span class="lineNum">     204</span>              :     if (copy) {</span>
-<span id="L205"><span class="lineNum">     205</span> <span class="tlaUNC">           0 :       list = [...list];</span></span>
-<span id="L206"><span class="lineNum">     206</span>              :     }</span>
-<span id="L207"><span class="lineNum">     207</span> <span class="tlaUNC">           0 :     for (int i = 0, l = list.length; i &lt; l; i++) {</span></span>
-<span id="L208"><span class="lineNum">     208</span> <span class="tlaUNC">           0 :       int j = nextInt(l);</span></span>
-<span id="L209"><span class="lineNum">     209</span> <span class="tlaUNC">           0 :       if (j == i) continue;</span></span>
-<span id="L210"><span class="lineNum">     210</span> <span class="tlaUNC">           0 :       T item = list[j];</span></span>
-<span id="L211"><span class="lineNum">     211</span> <span class="tlaUNC">           0 :       list[j] = list[i];</span></span>
-<span id="L212"><span class="lineNum">     212</span> <span class="tlaUNC">           0 :       list[i] = item;</span></span>
-<span id="L213"><span class="lineNum">     213</span>              :     }</span>
-<span id="L214"><span class="lineNum">     214</span>              :     return list;</span>
-<span id="L215"><span class="lineNum">     215</span>              :   }</span>
-<span id="L216"><span class="lineNum">     216</span>              : }</span>
-<span id="L217"><span class="lineNum">     217</span>              : </span>
-<span id="L218"><span class="lineNum">     218</span>              : //----------------------------------------------------------------------------</span>
-<span id="L219"><span class="lineNum">     219</span>              : // Hue Constants</span>
-<span id="L220"><span class="lineNum">     220</span>              : //----------------------------------------------------------------------------</span>
-<span id="L221"><span class="lineNum">     221</span>              : </span>
-<span id="L222"><span class="lineNum">     222</span>              : /// Hue values for primary and secondary colors, useful with [RandomExtensions.getColor].</span>
-<span id="L223"><span class="lineNum">     223</span>              : ///</span>
-<span id="L224"><span class="lineNum">     224</span>              : /// These constants represent hue values in degrees (0° to 360°) for common colors.</span>
-<span id="L225"><span class="lineNum">     225</span>              : class Hue {</span>
-<span id="L226"><span class="lineNum">     226</span>              :   static const double red = 0.0;</span>
-<span id="L227"><span class="lineNum">     227</span>              :   static const double green = 120.0;</span>
-<span id="L228"><span class="lineNum">     228</span>              :   static const double blue = 240.0;</span>
-<span id="L229"><span class="lineNum">     229</span>              :   static const double yellow = 60.0;</span>
-<span id="L230"><span class="lineNum">     230</span>              :   static const double cyan = 180.0;</span>
-<span id="L231"><span class="lineNum">     231</span>              :   static const double magenta = 300.0;</span>
-<span id="L232"><span class="lineNum">     232</span>              : }</span>
+<span id="L148"><span class="lineNum">     148</span>              :     double minOpacity = 1.0,</span>
+<span id="L149"><span class="lineNum">     149</span>              :     double maxOpacity = 1.0,</span>
+<span id="L150"><span class="lineNum">     150</span>              :     double? hue,</span>
+<span id="L151"><span class="lineNum">     151</span>              :     double hueRange = 0.0,</span>
+<span id="L152"><span class="lineNum">     152</span>              :     double minHue = 0.0,</span>
+<span id="L153"><span class="lineNum">     153</span>              :     double maxHue = 360.0,</span>
+<span id="L154"><span class="lineNum">     154</span>              :     double? saturation,</span>
+<span id="L155"><span class="lineNum">     155</span>              :     double minSaturation = 0.0,</span>
+<span id="L156"><span class="lineNum">     156</span>              :     double maxSaturation = 1.0,</span>
+<span id="L157"><span class="lineNum">     157</span>              :     double? lightness,</span>
+<span id="L158"><span class="lineNum">     158</span>              :     double minLightness = 0.0,</span>
+<span id="L159"><span class="lineNum">     159</span>              :     double maxLightness = 1.0,</span>
+<span id="L160"><span class="lineNum">     160</span>              :   }) {</span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">           2 :     minHue = (hue == null ? minHue : hue - hueRange) % 360;</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaGNC">           2 :     maxHue = (hue == null ? maxHue : hue + hueRange) % 360;</span></span>
+<span id="L163"><span class="lineNum">     163</span> <span class="tlaGNC">           1 :     if (minHue &gt; maxHue) {</span></span>
+<span id="L164"><span class="lineNum">     164</span> <span class="tlaGNC">           1 :       minHue -= 360;</span></span>
+<span id="L165"><span class="lineNum">     165</span>              :     }</span>
+<span id="L166"><span class="lineNum">     166</span>              : </span>
+<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">           4 :     return HSLColor.fromAHSL(opacity ?? getDouble(minOpacity, maxOpacity), getDouble(minHue, maxHue) % 360,</span></span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">           2 :             saturation ?? getDouble(minSaturation, maxSaturation), lightness ?? getDouble(minLightness, maxLightness))</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">           1 :         .toColor();</span></span>
+<span id="L170"><span class="lineNum">     170</span>              :   }</span>
+<span id="L171"><span class="lineNum">     171</span>              : </span>
+<span id="L172"><span class="lineNum">     172</span>              :   //----------------------------------------------------------------------------</span>
+<span id="L173"><span class="lineNum">     173</span>              :   // Random List Operations</span>
+<span id="L174"><span class="lineNum">     174</span>              :   //----------------------------------------------------------------------------</span>
+<span id="L175"><span class="lineNum">     175</span>              : </span>
+<span id="L176"><span class="lineNum">     176</span>              :   /// Picks a random item from a list. Optionally removes it or skews selection with a [Curve].</span>
+<span id="L177"><span class="lineNum">     177</span>              :   ///</span>
+<span id="L178"><span class="lineNum">     178</span>              :   /// - [list]: The list to pick from.</span>
+<span id="L179"><span class="lineNum">     179</span>              :   /// - [curve]: Optional curve to skew the selection.</span>
+<span id="L180"><span class="lineNum">     180</span>              :   /// - [remove]: If `true`, removes the selected item from the list.</span>
+<span id="L181"><span class="lineNum">     181</span>              :   ///</span>
+<span id="L182"><span class="lineNum">     182</span>              :   /// ```dart</span>
+<span id="L183"><span class="lineNum">     183</span>              :   /// final list = [1, 2, 3, 4];</span>
+<span id="L184"><span class="lineNum">     184</span>              :   /// rnd.getItem(list); // Random item from the list</span>
+<span id="L185"><span class="lineNum">     185</span>              :   /// rnd.getItem(list, remove: true); // Removes and returns a random item</span>
+<span id="L186"><span class="lineNum">     186</span>              :   /// ```</span>
+<span id="L187"><span class="lineNum">     187</span> <span class="tlaGNC">           1 :   T getItem&lt;T&gt;(List&lt;T&gt; list, {Curve? curve, bool remove = false}) {</span></span>
+<span id="L188"><span class="lineNum">     188</span> <span class="tlaGNC">           2 :     final int i = getInt(0, list.length, curve: curve);</span></span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaGNC">           1 :     return remove ? list.removeAt(i) : list[i];</span></span>
+<span id="L190"><span class="lineNum">     190</span>              :   }</span>
+<span id="L191"><span class="lineNum">     191</span>              : </span>
+<span id="L192"><span class="lineNum">     192</span>              :   /// Randomizes the order of a list. Optionally creates a shuffled copy.</span>
+<span id="L193"><span class="lineNum">     193</span>              :   ///</span>
+<span id="L194"><span class="lineNum">     194</span>              :   /// - [list]: The list to shuffle.</span>
+<span id="L195"><span class="lineNum">     195</span>              :   /// - [copy]: If `true`, shuffles a copy of the list instead of the original.</span>
+<span id="L196"><span class="lineNum">     196</span>              :   ///</span>
+<span id="L197"><span class="lineNum">     197</span>              :   /// ```dart</span>
+<span id="L198"><span class="lineNum">     198</span>              :   /// final list = [1, 2, 3, 4];</span>
+<span id="L199"><span class="lineNum">     199</span>              :   /// rnd.shuffle(list); // Shuffles the original list</span>
+<span id="L200"><span class="lineNum">     200</span>              :   /// rnd.shuffle(list, copy: true); // Returns a shuffled copy</span>
+<span id="L201"><span class="lineNum">     201</span>              :   /// ```</span>
+<span id="L202"><span class="lineNum">     202</span> <span class="tlaGNC">           1 :   List&lt;T&gt; shuffle&lt;T&gt;(List&lt;T&gt; list, {bool copy = false}) {</span></span>
+<span id="L203"><span class="lineNum">     203</span>              :     if (copy) {</span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC">           1 :       list = [...list];</span></span>
+<span id="L205"><span class="lineNum">     205</span>              :     }</span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           3 :     for (int i = 0, l = list.length; i &lt; l; i++) {</span></span>
+<span id="L207"><span class="lineNum">     207</span> <span class="tlaGNC">           1 :       int j = nextInt(l);</span></span>
+<span id="L208"><span class="lineNum">     208</span> <span class="tlaGNC">           1 :       if (j == i) continue;</span></span>
+<span id="L209"><span class="lineNum">     209</span> <span class="tlaGNC">           1 :       T item = list[j];</span></span>
+<span id="L210"><span class="lineNum">     210</span> <span class="tlaGNC">           2 :       list[j] = list[i];</span></span>
+<span id="L211"><span class="lineNum">     211</span> <span class="tlaGNC">           1 :       list[i] = item;</span></span>
+<span id="L212"><span class="lineNum">     212</span>              :     }</span>
+<span id="L213"><span class="lineNum">     213</span>              :     return list;</span>
+<span id="L214"><span class="lineNum">     214</span>              :   }</span>
+<span id="L215"><span class="lineNum">     215</span>              : }</span>
+<span id="L216"><span class="lineNum">     216</span>              : </span>
+<span id="L217"><span class="lineNum">     217</span>              : //----------------------------------------------------------------------------</span>
+<span id="L218"><span class="lineNum">     218</span>              : // Hue Constants</span>
+<span id="L219"><span class="lineNum">     219</span>              : //----------------------------------------------------------------------------</span>
+<span id="L220"><span class="lineNum">     220</span>              : </span>
+<span id="L221"><span class="lineNum">     221</span>              : /// Hue values for primary and secondary colors, useful with [RandomExtensions.getColor].</span>
+<span id="L222"><span class="lineNum">     222</span>              : ///</span>
+<span id="L223"><span class="lineNum">     223</span>              : /// These constants represent hue values in degrees (0° to 360°) for common colors.</span>
+<span id="L224"><span class="lineNum">     224</span>              : class Hue {</span>
+<span id="L225"><span class="lineNum">     225</span>              :   static const double red = 0.0;</span>
+<span id="L226"><span class="lineNum">     226</span>              :   static const double green = 120.0;</span>
+<span id="L227"><span class="lineNum">     227</span>              :   static const double blue = 240.0;</span>
+<span id="L228"><span class="lineNum">     228</span>              :   static const double yellow = 60.0;</span>
+<span id="L229"><span class="lineNum">     229</span>              :   static const double cyan = 180.0;</span>
+<span id="L230"><span class="lineNum">     230</span>              :   static const double magenta = 300.0;</span>
+<span id="L231"><span class="lineNum">     231</span>              : }</span>
         </pre>
               </td>
             </tr>
