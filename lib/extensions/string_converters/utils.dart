@@ -5,7 +5,7 @@ abstract class StringConversionStrategy {
 // Shared logic for splitting and capitalization
 mixin StringSplitter {
   List<String> splitIntoWords(String input) {
-    return input.split(RegExp(r'[\s_-]+'));
+    return input.trim().split(RegExp(r'[\s_-]+'));
   }
 
   String capitalize(String word) {

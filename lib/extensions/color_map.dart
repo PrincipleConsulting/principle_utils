@@ -105,7 +105,7 @@ Color _colorFromHex(String inputString) {
   final RegExp hexValidator = RegExp(kCompleteValidHexPattern);
   // Validating input, if it does not match — it's not proper HEX.
   if (!hexValidator.hasMatch(inputString)) {
-    throw FormatException('Invalid HEX color: $inputString');
+    throw FormatException('Invalid HEX color: ${inputString.isEmpty ? 'empty string' : inputString}');
   }
   // Remove # if included in input.
   String hexString = inputString.replaceFirst('#', '').toUpperCase();

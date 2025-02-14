@@ -3,7 +3,7 @@ import 'utils.dart';
 class CamelCaseConverter with StringSplitter implements StringConversionStrategy {
   @override
   String convert(String input) {
-    final words = splitIntoWords(input);
+    final List<String> words = splitIntoWords(input);
     if (words.isEmpty) {
       return '';
     }

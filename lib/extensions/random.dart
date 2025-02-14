@@ -12,7 +12,7 @@ Random rnd = Random(_seed);
 
 /// Updates the seed for the global [Random] instance.
 ///
-/// Setting a new seed reinitializes the [rnd] instance, ensuring reproducible
+/// Setting a new seed reinitialized the [rnd] instance, ensuring reproducible
 /// random sequences for testing or debugging.
 set rndSeed(int seed) => rnd = Random(_seed = seed);
 
@@ -156,15 +156,9 @@ extension RandomExtensions on Random {
     const double minLightness = 0.0;
     const double maxLightness = 1.0;
 
-    const double hueRange = 0.0;
-    double minHue = 0.0;
-    double maxHue = 360.0;
+    final double minHue = (hue ?? 0.0) % 360;
+    final double maxHue = (hue ?? 360) % 360;
 
-    minHue = (hue == null ? minHue : hue - hueRange) % 360;
-    maxHue = (hue == null ? maxHue : hue + hueRange) % 360;
-    if (minHue > maxHue) {
-      minHue -= 360;
-    }
     return HSLColor.fromAHSL(opacity ?? getDouble(minOpacity, maxOpacity), getDouble(minHue, maxHue) % 360,
             saturation ?? getDouble(minSaturation, maxSaturation), lightness ?? getDouble(minLightness, maxLightness))
         .toColor();
