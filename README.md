@@ -8,9 +8,9 @@ A comprehensive Flutter utility package offering responsive layouts, string mani
 - [Installation](#installation)
 - [Features](#features)
   - [Extensions](#extensions)
-  - [Sizing](#sizing)
+  - [Sizing](#sizing-system)
   - [Custom Colors](#custom-colors)
-  - [Types](#types)
+  - [Types](#type-utilities)
   - [Platform Detection](#platform-device-detection)
 - [Usage Examples](#usage-examples)
 - [Contributing](#contributing)
@@ -163,6 +163,16 @@ Widget build(BuildContext context) {
       style: TextStyle(fontSize: TWFontSize.textXl),
     ),
   );
+}
+```
+
+### Platform Device Detection
+
+Easily detect the current platform to tailor your UI:
+
+```dart
+if (PlatformDevice.isMobile) {
+  print("Running on a mobile device");
 }
 ```
 
