@@ -43,6 +43,22 @@ Enhance your Flutter code with useful extensions:
   double scaledWidth = context.scaleBaseWidth(); // Scale width relative to base
   bool isLandscape = context.isLandscape; // Check if in landscape mode
   ```
+Access screen properties, responsive values, and scale dimensions.
+
+```dart
+// Responsive values based on screen width breakpoints
+double padding = context.responsive<double>(
+16,   // Default
+sm: 24, // ≥640px
+md: 32, // ≥768px
+lg: 40, // ≥1024px
+xl: 48, // ≥1280px
+);
+
+// Existing scaling utilities
+double scaledH = context.scaleBaseHeight(100);
+bool isLandscape = context.isLandscape;
+```
 
 - **Base Dimensions:** Use predefined base dimensions for consistent scaling.
 
@@ -72,7 +88,7 @@ Enhance your Flutter code with useful extensions:
   final randomValue = rnd.getInt(1, 10); // Random integer between 1 and 9
   final randomColor = rnd.getColor(); // Random color
   ```
-
+  
 ### Sizing
 
 Improve your responsive layouts with screen and sizing utilities:
@@ -104,8 +120,8 @@ Improve your responsive layouts with screen and sizing utilities:
 Maintain brand consistency with predefined custom colors:
 
 ```dart
-Color primaryColor = PrincipleColors.primary;
-Color accentColor = PrincipleColors.accent;
+Color primaryColor = CustomColors.blue500;
+Color accentColor = CustomColors.orange500;
 ```
 
 ### Types
@@ -170,4 +186,3 @@ Contributions are welcome! Feel free to submit a pull request or open an issue.
 ## License
 
 This project is licensed under the MIT License.
-
