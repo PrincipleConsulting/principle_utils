@@ -1,6 +1,6 @@
 library principle_utils;
 
-export 'custom_colors/custom_colors.dart';
-export 'extensions/barrel.dart';
-export 'sizing/barrel.dart';
-export 'types/barrel.dart';
+export 'src/custom_colors/barrel.dart';
+export 'src/extensions/barrel.dart';
+export 'src/sizing/barrel.dart';
+export 'src/types/barrel.dart';

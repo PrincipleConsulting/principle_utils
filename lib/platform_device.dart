@@ -1,1 +1,1 @@
-export 'platform_device/barrel.dart';
+export 'src/platform_device/barrel.dart';

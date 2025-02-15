@@ -1,7 +1,16 @@
 name: principle_utils
-description: "Principle Flutter Utils Package"
-version: 0.1.1
-homepage:
+description: "Principle Utils is a versatile Dart utility package designed to accelerate Flutter development with essential tools for responsive layouts, string manipulation, and consistent theming. It provides:
+Adaptive Responsiveness: Scale layouts using iPhone 16 Pro (402x874px) as a base, with utilities for screen dimensions, orientation detection, and physical size calculations (e.g., centimeters).
+String Conversions: Transform text across 14+ formats (camelCase, snake_case, SpOnGeCaSe, etc.) via chainable extensions.
+Color Utilities: Convert HEX ↔ Color with validation, and access Material-style predefined palettes (blue500, gray800).
+Type Safety: Manage data states (DataSuccess, DataError), implement clean architecture with UseCase, and use tuples/key-value pairs.
+Sizing System: Predefined spacing (TWSpace.sp16), font sizes, and elevation constants for pixel-perfect UIs.
+Ideal for teams prioritizing cross-device consistency, Principle Utils simplifies complex tasks with intuitive extensions, reduces boilerplate, and enforces brand alignment. Enhance productivity while maintaining clean, scalable code."
+
+version: 0.1.3
+
+homepage: https://github.com/PrincipleConsulting/principle_utils
+repository: https://github.com/PrincipleConsulting/principle_utils
 
 environment:
   sdk: ^3.5.4
@@ -16,6 +25,3 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
   mocktail: ^1.0.4
-
-
-flutter:
