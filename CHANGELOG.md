@@ -1,3 +1,5 @@
+## 0.1.4
+* updated description
 
 ## 0.1.3
 * Added stringify extension, and color extension

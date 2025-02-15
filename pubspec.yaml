@@ -1,7 +1,7 @@
 name: principle_utils
 description: "Principle Utils: A Dart package for Flutter with responsive layouts, string case conversions, color utilities, and type-safe patterns. Simplify development with intuitive extensions and consistent theming."
 
-version: 0.1.3
+version: 0.1.4
 
 homepage: https://github.com/PrincipleConsulting/principle_utils
 repository: https://github.com/PrincipleConsulting/principle_utils
