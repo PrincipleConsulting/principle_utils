@@ -58,9 +58,7 @@ extension RandomExtensions on Random {
   /// rnd.getInt(1, 10, curve: Curves.easeIn); // Skewed distribution
   /// ```
   int getInt(int min, int max, {Curve? curve}) {
-    return curve == null
-        ? min + nextInt(max - min)
-        : getDouble(min * 1.0, max * 1.0, curve: curve).toInt();
+    return curve == null ? min + nextInt(max - min) : getDouble(min * 1.0, max * 1.0, curve: curve).toInt();
   }
 
   /// Generates a random `double` within a range, optionally influenced by a [Curve].
@@ -74,9 +72,7 @@ extension RandomExtensions on Random {
   /// rnd.getDouble(1.0, 10.0, curve: Curves.easeOut); // Skewed distribution
   /// ```
   double getDouble(double min, double max, {Curve? curve}) {
-    return curve == null
-        ? min + nextDouble() * (max - min)
-        : min + curve.transform(nextDouble()) * (max - min);
+    return curve == null ? min + nextDouble() * (max - min) : min + curve.transform(nextDouble()) * (max - min);
   }
 
   //----------------------------------------------------------------------------
@@ -168,11 +164,8 @@ extension RandomExtensions on Random {
       minHue -= 360;
     }
 
-    return HSLColor.fromAHSL(
-            opacity ?? getDouble(minOpacity, maxOpacity),
-            getDouble(minHue, maxHue) % 360,
-            saturation ?? getDouble(minSaturation, maxSaturation),
-            lightness ?? getDouble(minLightness, maxLightness))
+    return HSLColor.fromAHSL(opacity ?? getDouble(minOpacity, maxOpacity), getDouble(minHue, maxHue) % 360,
+            saturation ?? getDouble(minSaturation, maxSaturation), lightness ?? getDouble(minLightness, maxLightness))
         .toColor();
   }
 
@@ -208,12 +201,14 @@ extension RandomExtensions on Random {
   /// ```
   List<T> shuffle<T>(List<T> list, {bool copy = false}) {
     if (copy) {
-      list = [...list];
+      list = <T>[...list];
     }
     for (int i = 0, l = list.length; i < l; i++) {
-      int j = nextInt(l);
-      if (j == i) continue;
-      T item = list[j];
+      final int j = nextInt(l);
+      if (j == i) {
+        continue;
+      }
+      final T item = list[j];
       list[j] = list[i];
       list[i] = item;
     }

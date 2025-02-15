@@ -1,5 +1,3 @@
-library platform_device;
-
 import 'core/barrel.dart';
 
 export 'core/barrel.dart';
@@ -28,32 +26,25 @@ abstract final class PlatformDevice {
   // Platform checks
 
   /// Returns `true` if the platform is a web browser.
-  static bool get isWeb =>
-      DevicePlatformType.currentPlatformType == PlatformType.Web;
+  static bool get isWeb => DevicePlatformType.currentPlatformType == PlatformType.Web;
 
   /// Returns `true` if the platform is macOS.
-  static bool get isMacOS =>
-      DevicePlatformType.currentPlatformType == PlatformType.MacOS;
+  static bool get isMacOS => DevicePlatformType.currentPlatformType == PlatformType.MacOS;
 
   /// Returns `true` if the platform is Windows.
-  static bool get isWindows =>
-      DevicePlatformType.currentPlatformType == PlatformType.Windows;
+  static bool get isWindows => DevicePlatformType.currentPlatformType == PlatformType.Windows;
 
   /// Returns `true` if the platform is Linux.
-  static bool get isLinux =>
-      DevicePlatformType.currentPlatformType == PlatformType.Linux;
+  static bool get isLinux => DevicePlatformType.currentPlatformType == PlatformType.Linux;
 
   /// Returns `true` if the platform is Android.
-  static bool get isAndroid =>
-      DevicePlatformType.currentPlatformType == PlatformType.Android;
+  static bool get isAndroid => DevicePlatformType.currentPlatformType == PlatformType.Android;
 
   /// Returns `true` if the platform is iOS.
-  static bool get isIOS =>
-      DevicePlatformType.currentPlatformType == PlatformType.IOS;
+  static bool get isIOS => DevicePlatformType.currentPlatformType == PlatformType.IOS;
 
   /// Returns `true` if the platform is Fuchsia.
-  static bool get isFuchsia =>
-      DevicePlatformType.currentPlatformType == PlatformType.Fuchsia;
+  static bool get isFuchsia => DevicePlatformType.currentPlatformType == PlatformType.Fuchsia;
 
   // Composite checks
 
@@ -67,8 +58,7 @@ abstract final class PlatformDevice {
   static bool get isDesktop => isLinux || isMacOS || isWindows;
 
   /// Returns `true` if the platform is either a desktop system or a web browser.
-  static bool get isDesktopOrWeb =>
-      PlatformDevice.isDesktop || PlatformDevice.isWeb;
+  static bool get isDesktopOrWeb => PlatformDevice.isDesktop || PlatformDevice.isWeb;
 
   /// Gets the operating system name as a lowercase string.
   ///
@@ -83,19 +73,19 @@ abstract final class PlatformDevice {
   static String get operatingSystem {
     switch (value) {
       case PlatformType.Web:
-        return "web";
+        return 'web';
       case PlatformType.MacOS:
-        return "macos";
+        return 'macos';
       case PlatformType.Windows:
-        return "windows";
+        return 'windows';
       case PlatformType.Linux:
-        return "linux";
+        return 'linux';
       case PlatformType.Android:
-        return "android";
+        return 'android';
       case PlatformType.IOS:
-        return "ios";
+        return 'ios';
       case PlatformType.Fuchsia:
-        return "fuchsia";
+        return 'fuchsia';
     }
   }
 }

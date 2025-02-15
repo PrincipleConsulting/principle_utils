@@ -30,8 +30,7 @@ void main() {
       expect(context.baseDiagonal, closeTo(expectedBaseDiagonal, 0.001));
     });
 
-    testWidgets('returns correct screen size values',
-        (WidgetTester tester) async {
+    testWidgets('returns correct screen size values', (WidgetTester tester) async {
       // Set a known logical screen size.
       tester.view.devicePixelRatio = 1.0; // Ensure 1:1 mapping.
       tester.view.physicalSize = const Size(800, 600);
@@ -57,8 +56,7 @@ void main() {
       expect(context.screenAspectRatio, closeTo(800 / 600, 0.001));
     });
 
-    testWidgets('widthPct and heightPct return correct fractions',
-        (WidgetTester tester) async {
+    testWidgets('widthPct and heightPct return correct fractions', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(1000, 500);
 
@@ -77,8 +75,7 @@ void main() {
       expect(context.heightPct(0.2), equals(100));
     });
 
-    testWidgets('physical sizes in centimeters are calculated correctly',
-        (WidgetTester tester) async {
+    testWidgets('physical sizes in centimeters are calculated correctly', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       // Set logical dimensions so that:
       // widthCM = screenWidth / 38; heightCM = screenHeight / 38.
@@ -102,8 +99,7 @@ void main() {
       expect(context.diagonalCM, closeTo(screenDiagonal / 38, 0.001));
     });
 
-    testWidgets('scaleBaseHeight returns expected value without curve',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseHeight returns expected value without curve', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       // Set the screen height to 600. (Base height is 874.)
       tester.view.physicalSize = const Size(800, 600);
@@ -122,8 +118,7 @@ void main() {
       expect(context.scaleBaseHeight(), closeTo(expectedScale, 0.001));
     });
 
-    testWidgets('scaleBaseWidth returns expected value without curve',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseWidth returns expected value without curve', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       // Set the screen width to 800. (Base width is 402.)
       tester.view.physicalSize = const Size(800, 600);
@@ -142,8 +137,7 @@ void main() {
       expect(context.scaleBaseWidth(), closeTo(expectedScale, 0.001));
     });
 
-    testWidgets('scaleBaseDiagonal returns expected value without curve',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseDiagonal returns expected value without curve', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(800, 600);
 
@@ -163,8 +157,7 @@ void main() {
       expect(context.scaleBaseDiagonal(), closeTo(expectedScale, 0.001));
     });
 
-    testWidgets('scaleBaseMin returns expected value without curve',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseMin returns expected value without curve', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(800, 600);
 
@@ -184,8 +177,7 @@ void main() {
       expect(context.scaleBaseMin(), closeTo(expectedScale, 0.001));
     });
 
-    testWidgets('scaleBaseMax returns expected value without curve',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseMax returns expected value without curve', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(800, 600);
 
@@ -205,9 +197,7 @@ void main() {
       expect(context.scaleBaseMax(), closeTo(expectedScale, 0.001));
     });
 
-    testWidgets(
-        'scaleBaseHeight with linear curve returns same value as without curve',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseHeight with linear curve returns same value as without curve', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(800, 600);
 
@@ -226,8 +216,7 @@ void main() {
       expect(withCurve, closeTo(withoutCurve, 0.001));
     });
 
-    testWidgets('scaleBaseHeight with easeIn curve returns transformed value',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseHeight with easeIn curve returns transformed value', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(800, 600);
 
@@ -244,14 +233,11 @@ void main() {
       const double scale = 600 / 874;
       final double floorScale = scale.floorToDouble();
       final double fractionalPart = scale - floorScale; // same as scale % 1
-      final double expected =
-          Curves.easeIn.transform(fractionalPart) + floorScale;
-      expect(context.scaleBaseHeight(curve: Curves.easeIn),
-          closeTo(expected, 0.001));
+      final double expected = Curves.easeIn.transform(fractionalPart) + floorScale;
+      expect(context.scaleBaseHeight(curve: Curves.easeIn), closeTo(expected, 0.001));
     });
 
-    testWidgets('scaleBaseWidth with easeOut curve returns transformed value',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseWidth with easeOut curve returns transformed value', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       // Set screen width to 800 (base width is 402).
       tester.view.physicalSize = const Size(800, 600);
@@ -268,15 +254,11 @@ void main() {
       const double scale = 800 / 402;
       final double floorScale = scale.floorToDouble();
       final double fractionalPart = scale - floorScale;
-      final double expected =
-          Curves.easeOut.transform(fractionalPart) + floorScale;
-      expect(context.scaleBaseWidth(curve: Curves.easeOut),
-          closeTo(expected, 0.001));
+      final double expected = Curves.easeOut.transform(fractionalPart) + floorScale;
+      expect(context.scaleBaseWidth(curve: Curves.easeOut), closeTo(expected, 0.001));
     });
 
-    testWidgets(
-        'scaleBaseDiagonal with easeOut curve returns transformed value',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseDiagonal with easeOut curve returns transformed value', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       tester.view.physicalSize = const Size(800, 600);
 
@@ -294,14 +276,11 @@ void main() {
       final double scale = screenDiagonal / baseDiagonal;
       final double floorScale = scale.floorToDouble();
       final double fractionalPart = scale - floorScale;
-      final double expected =
-          Curves.easeOut.transform(fractionalPart) + floorScale;
-      expect(context.scaleBaseDiagonal(curve: Curves.easeOut),
-          closeTo(expected, 0.001));
+      final double expected = Curves.easeOut.transform(fractionalPart) + floorScale;
+      expect(context.scaleBaseDiagonal(curve: Curves.easeOut), closeTo(expected, 0.001));
     });
 
-    testWidgets('scaleBaseMin with easeOut curve returns transformed value',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseMin with easeOut curve returns transformed value', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       // Use a screen size where width and height are distinct.
       tester.view.physicalSize = const Size(800, 600);
@@ -320,14 +299,11 @@ void main() {
       final double scale = min(scaleWidth, scaleHeight);
       final double floorScale = scale.floorToDouble();
       final double fractionalPart = scale - floorScale;
-      final double expected =
-          Curves.easeOut.transform(fractionalPart) + floorScale;
-      expect(context.scaleBaseMin(curve: Curves.easeOut),
-          closeTo(expected, 0.001));
+      final double expected = Curves.easeOut.transform(fractionalPart) + floorScale;
+      expect(context.scaleBaseMin(curve: Curves.easeOut), closeTo(expected, 0.001));
     });
 
-    testWidgets('scaleBaseMax with easeOut curve returns transformed value',
-        (WidgetTester tester) async {
+    testWidgets('scaleBaseMax with easeOut curve returns transformed value', (WidgetTester tester) async {
       tester.view.devicePixelRatio = 1.0;
       // Use a screen size where width and height are distinct.
       tester.view.physicalSize = const Size(800, 600);
@@ -341,15 +317,13 @@ void main() {
       );
       final BuildContext context = tester.element(find.byType(SizedBox));
 
-      final double scaleWidth = 800 / 402;
-      final double scaleHeight = 600 / 874;
+      const double scaleWidth = 800 / 402;
+      const double scaleHeight = 600 / 874;
       final double scale = max(scaleWidth, scaleHeight);
       final double floorScale = scale.floorToDouble();
       final double fractionalPart = scale - floorScale;
-      final double expected =
-          Curves.easeOut.transform(fractionalPart) + floorScale;
-      expect(context.scaleBaseMax(curve: Curves.easeOut),
-          closeTo(expected, 0.001));
+      final double expected = Curves.easeOut.transform(fractionalPart) + floorScale;
+      expect(context.scaleBaseMax(curve: Curves.easeOut), closeTo(expected, 0.001));
     });
   });
 }

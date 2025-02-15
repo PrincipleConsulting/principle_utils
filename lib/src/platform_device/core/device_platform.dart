@@ -31,11 +31,21 @@ abstract final class DevicePlatformType {
   /// This method relies on the `dart:io` library's [Platform] class to
   /// determine the platform type.
   static PlatformType get currentPlatformType {
-    if (Platform.isWindows) return PlatformType.Windows;
-    if (Platform.isFuchsia) return PlatformType.Fuchsia;
-    if (Platform.isMacOS) return PlatformType.MacOS;
-    if (Platform.isLinux) return PlatformType.Linux;
-    if (Platform.isIOS) return PlatformType.IOS;
+    if (Platform.isWindows) {
+      return PlatformType.Windows;
+    }
+    if (Platform.isFuchsia) {
+      return PlatformType.Fuchsia;
+    }
+    if (Platform.isMacOS) {
+      return PlatformType.MacOS;
+    }
+    if (Platform.isLinux) {
+      return PlatformType.Linux;
+    }
+    if (Platform.isIOS) {
+      return PlatformType.IOS;
+    }
     return PlatformType.Android;
   }
 }

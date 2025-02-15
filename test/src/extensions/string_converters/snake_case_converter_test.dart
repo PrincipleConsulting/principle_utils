@@ -5,8 +5,8 @@ void main() {
   group('SnakeCaseConverter', () {
     test('converts input to snake case', () {
       final SnakeCaseConverter converter = SnakeCaseConverter();
-      expect(converter.convert("Hello World"), equals("hello_world"));
-      expect(converter.convert("hello-world_test"), equals("hello_world_test"));
+      expect(converter.convert('Hello World'), equals('hello_world'));
+      expect(converter.convert('hello-world_test'), equals('hello_world_test'));
     });
   });
 }
