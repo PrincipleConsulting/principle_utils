@@ -47,7 +47,7 @@ import 'package:principle_utils/principle_utils.dart';
 
 ### Extensions
 
-#### 1. Advanced Screen Responsiveness (**Enhanced**)
+#### 1. Advanced Screen Responsiveness
 ```dart
 // Responsive scaling
 double scaleFactor = context.scaleBaseHeight(); 
@@ -73,7 +73,7 @@ if (context.isLandscape) {/* Landscape UI */}
 - Base Height: 874px
 - Pixel Density: 38px/cm
 
-#### 2. String Case Conversions (**New**)
+#### 2. String Case Conversions
 ```dart
 'hello_world'.toCamelCase();  // helloWorld
 'user id'.toTitleCase();      // User Id
