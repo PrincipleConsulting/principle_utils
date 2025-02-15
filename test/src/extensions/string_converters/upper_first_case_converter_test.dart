@@ -5,7 +5,7 @@ void main() {
   group('UpperCaseConverter', () {
     test('converts input to uppercase', () {
       final UpperCaseConverter converter = UpperCaseConverter();
-      expect(converter.convert("hello world"), equals("HELLO WORLD"));
+      expect(converter.convert('hello world'), equals('HELLO WORLD'));
     });
   });
 }
