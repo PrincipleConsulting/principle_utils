@@ -27,6 +27,7 @@ jobs:
         uses: dart-lang/setup-dart@v1
         with:
           sdk: stable
+          environment: pub.dev
 
       # 3. Get package dependencies.
       - name: Install dependencies
