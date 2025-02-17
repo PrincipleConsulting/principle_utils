@@ -2,7 +2,10 @@
 name: Publish to pub.dev
 
 on:
-  push:
+  pull_request:
+    branches: 
+      - main
+    types: [closed]
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'  # Must match your pub.dev tag pattern (e.g., v1.2.3)
 
@@ -10,6 +13,7 @@ jobs:
   publish:
     permissions:
       id-token: write  # Required for OIDC authentication with pub.dev
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       # 1. Check out the repository code.
@@ -29,8 +33,8 @@ jobs:
         run: dart pub get
 
       # 4. (Optional) Run tests or generate code if needed.
-      # - name: Run tests
-      #   run: dart test
+      - name: Run tests
+        run: dart test
 
       # 5. Publish the package to pub.dev.
       # Ensure that your pub credentials (a JSON file) are stored in the secret `PUB_CREDENTIALS`.
