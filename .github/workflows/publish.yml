@@ -28,15 +28,16 @@ jobs:
       # 3. Get package dependencies.
       - name: Install dependencies
         run: dart pub get
-      # Che
+        
+      # 4. Check formating
       - name: Checking Formating
         run: dart format --output=none --set-exit-if-changed .
 
-      # 4. (Optional) Run tests or generate code if needed.
+      # 5. (Optional) Run tests or generate code if needed.
       - name: Run tests
         run: dart test
 
-      # 5. Publish the package to pub.dev.
+      # 6. Publish the package to pub.dev.
       # Ensure that your pub credentials (a JSON file) are stored in the secret `PUB_CREDENTIALS`.
       - name: Publish package
         env:
