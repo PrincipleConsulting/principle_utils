@@ -26,25 +26,32 @@ abstract final class PlatformDevice {
   // Platform checks
 
   /// Returns `true` if the platform is a web browser.
-  static bool get isWeb => DevicePlatformType.currentPlatformType == PlatformType.Web;
+  static bool get isWeb =>
+      DevicePlatformType.currentPlatformType == PlatformType.Web;
 
   /// Returns `true` if the platform is macOS.
-  static bool get isMacOS => DevicePlatformType.currentPlatformType == PlatformType.MacOS;
+  static bool get isMacOS =>
+      DevicePlatformType.currentPlatformType == PlatformType.MacOS;
 
   /// Returns `true` if the platform is Windows.
-  static bool get isWindows => DevicePlatformType.currentPlatformType == PlatformType.Windows;
+  static bool get isWindows =>
+      DevicePlatformType.currentPlatformType == PlatformType.Windows;
 
   /// Returns `true` if the platform is Linux.
-  static bool get isLinux => DevicePlatformType.currentPlatformType == PlatformType.Linux;
+  static bool get isLinux =>
+      DevicePlatformType.currentPlatformType == PlatformType.Linux;
 
   /// Returns `true` if the platform is Android.
-  static bool get isAndroid => DevicePlatformType.currentPlatformType == PlatformType.Android;
+  static bool get isAndroid =>
+      DevicePlatformType.currentPlatformType == PlatformType.Android;
 
   /// Returns `true` if the platform is iOS.
-  static bool get isIOS => DevicePlatformType.currentPlatformType == PlatformType.IOS;
+  static bool get isIOS =>
+      DevicePlatformType.currentPlatformType == PlatformType.IOS;
 
   /// Returns `true` if the platform is Fuchsia.
-  static bool get isFuchsia => DevicePlatformType.currentPlatformType == PlatformType.Fuchsia;
+  static bool get isFuchsia =>
+      DevicePlatformType.currentPlatformType == PlatformType.Fuchsia;
 
   // Composite checks
 
@@ -58,7 +65,8 @@ abstract final class PlatformDevice {
   static bool get isDesktop => isLinux || isMacOS || isWindows;
 
   /// Returns `true` if the platform is either a desktop system or a web browser.
-  static bool get isDesktopOrWeb => PlatformDevice.isDesktop || PlatformDevice.isWeb;
+  static bool get isDesktopOrWeb =>
+      PlatformDevice.isDesktop || PlatformDevice.isWeb;
 
   /// Gets the operating system name as a lowercase string.
   ///
