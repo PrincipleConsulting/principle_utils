@@ -1,17 +1,41 @@
 # .github/workflows/publish.yml
 name: Publish to pub.dev
 
-
 on:
   pull_request:
-    types: [closed]
+    types: [opened, reopened, synchronize, closed]
+    branches:
+      - release
 
 jobs:
+  pr_checks:
+    # Run this job only if the PR is not closed yet.
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Install Dependencies
+        run: flutter pub get
+      - name: Format
+        run: dart format --output=none --set-exit-if-changed .
+      - name: Analyze
+        run: flutter analyze
+      - name: Test
+        run: flutter test
+      - name: Publish Dry Run
+        run:  dart pub publish --dry-run
+
   publish:
-    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'release'
-    permissions:
-      id-token: write  # Required for OIDC authentication with pub.dev    
-    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
-    with:
-      # Specify the github actions deployment environment
-      environment: pub.dev
+    # Run this job only when the PR is closed AND merged.
+    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Publish to pub.dev
+        run: dart pub publish --server=https://pub.dartlang.org
