@@ -58,7 +58,9 @@ extension RandomExtensions on Random {
   /// rnd.getInt(1, 10, curve: Curves.easeIn); // Skewed distribution
   /// ```
   int getInt(int min, int max, {Curve? curve}) {
-    return curve == null ? min + nextInt(max - min) : getDouble(min * 1.0, max * 1.0, curve: curve).toInt();
+    return curve == null
+        ? min + nextInt(max - min)
+        : getDouble(min * 1.0, max * 1.0, curve: curve).toInt();
   }
 
   /// Generates a random `double` within a range, optionally influenced by a [Curve].
@@ -72,7 +74,9 @@ extension RandomExtensions on Random {
   /// rnd.getDouble(1.0, 10.0, curve: Curves.easeOut); // Skewed distribution
   /// ```
   double getDouble(double min, double max, {Curve? curve}) {
-    return curve == null ? min + nextDouble() * (max - min) : min + curve.transform(nextDouble()) * (max - min);
+    return curve == null
+        ? min + nextDouble() * (max - min)
+        : min + curve.transform(nextDouble()) * (max - min);
   }
 
   //----------------------------------------------------------------------------
@@ -164,8 +168,11 @@ extension RandomExtensions on Random {
       minHue -= 360;
     }
 
-    return HSLColor.fromAHSL(opacity ?? getDouble(minOpacity, maxOpacity), getDouble(minHue, maxHue) % 360,
-            saturation ?? getDouble(minSaturation, maxSaturation), lightness ?? getDouble(minLightness, maxLightness))
+    return HSLColor.fromAHSL(
+            opacity ?? getDouble(minOpacity, maxOpacity),
+            getDouble(minHue, maxHue) % 360,
+            saturation ?? getDouble(minSaturation, maxSaturation),
+            lightness ?? getDouble(minLightness, maxLightness))
         .toColor();
   }
 

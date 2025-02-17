@@ -68,7 +68,8 @@ void main() {
       expect(color, isA<Color>());
     });
 
-    test('returns a color with fixed opacity when minOpacity equals maxOpacity', () {
+    test('returns a color with fixed opacity when minOpacity equals maxOpacity',
+        () {
       // With minOpacity == maxOpacity == 1.0 (default), opacity is fixed.
       final Color color = rnd.getColor();
       final HSLColor hsl = HSLColor.fromColor(color);
@@ -108,24 +109,31 @@ void main() {
       final double computedHue = hsl.hue;
       // Valid hue values are those that, after wrapping, fall in either [0, 30)
       // (if getDouble returns a positive value) or in [350, 360) (if negative).
-      final bool isInValidRange = (computedHue >= 0 && computedHue < 30) || (computedHue >= 350 && computedHue < 360);
-      expect(isInValidRange, isTrue, reason: 'Computed hue ($computedHue) is not in the expected range.');
+      final bool isInValidRange = (computedHue >= 0 && computedHue < 30) ||
+          (computedHue >= 350 && computedHue < 360);
+      expect(isInValidRange, isTrue,
+          reason: 'Computed hue ($computedHue) is not in the expected range.');
     });
 
-    test('returns a fixed saturation when minSaturation equals maxSaturation', () {
+    test('returns a fixed saturation when minSaturation equals maxSaturation',
+        () {
       // If saturation is provided via fixed range, the output should be constant.
-      final Color color = rnd.getColor(saturation: 0.5, minSaturation: 0.5, maxSaturation: 0.5);
+      final Color color =
+          rnd.getColor(saturation: 0.5, minSaturation: 0.5, maxSaturation: 0.5);
       final HSLColor hsl = HSLColor.fromColor(color);
       expect(hsl.saturation, closeTo(0.5, 0.0001));
     });
 
     test('returns a fixed lightness when minLightness equals maxLightness', () {
-      final Color color = rnd.getColor(lightness: 0.3, minLightness: 0.3, maxLightness: 0.3);
+      final Color color =
+          rnd.getColor(lightness: 0.3, minLightness: 0.3, maxLightness: 0.3);
       final HSLColor hsl = HSLColor.fromColor(color);
       expect(hsl.lightness, closeTo(0.3, 0.0001));
     });
 
-    test('getItem returns an element from the list and removes it when requested', () {
+    test(
+        'getItem returns an element from the list and removes it when requested',
+        () {
       final List<int> list = <int>[1, 2, 3, 4];
       final int originalLength = list.length;
       final int item = rnd.getItem(list, remove: true);
@@ -150,7 +158,8 @@ void main() {
       expect(list.toSet(), equals(original.toSet()));
       // It is possible (but unlikely) that the order remains unchanged.
       if (list.length > 1) {
-        expect(list, isNot(equals(original)), reason: 'List should be shuffled in place');
+        expect(list, isNot(equals(original)),
+            reason: 'List should be shuffled in place');
       }
     });
   });

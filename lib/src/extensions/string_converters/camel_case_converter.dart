@@ -1,6 +1,8 @@
 import 'utils.dart';
 
-class CamelCaseConverter with StringSplitter implements StringConversionStrategy {
+class CamelCaseConverter
+    with StringSplitter
+    implements StringConversionStrategy {
   @override
   String convert(String input) {
     final List<String> words = splitIntoWords(input);
