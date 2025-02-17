@@ -2,18 +2,14 @@
 name: Publish to pub.dev
 
 on:
-  push:
-    branches: 
-      - main
+  pull_request:
     types: [closed]
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'  # Must match your pub.dev tag pattern (e.g., v1.2.3)
 
 jobs:
   publish:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'release'
     permissions:
       id-token: write  # Required for OIDC authentication with pub.dev
-    # if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       # 1. Check out the repository code.
@@ -32,6 +28,9 @@ jobs:
       # 3. Get package dependencies.
       - name: Install dependencies
         run: dart pub get
+      # Che
+      - name: Checking Formating
+        run: dart format --output=none --set-exit-if-changed .
 
       # 4. (Optional) Run tests or generate code if needed.
       - name: Run tests
