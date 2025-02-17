@@ -1,3 +1,9 @@
+## 0.1.6
+* minor patch
+
+## 0.1.5
+* added example
+
 ## 0.1.4
 * updated description
 
