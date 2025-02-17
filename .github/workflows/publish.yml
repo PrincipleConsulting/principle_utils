@@ -10,37 +10,8 @@ jobs:
   publish:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'release'
     permissions:
-      id-token: write  # Required for OIDC authentication with pub.dev
-    runs-on: ubuntu-latest
-    steps:
-      # 1. Check out the repository code.
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Ensure full history for version/tag info.
-
-      # 2. Set up Dart (using the official Dart action).
-      - name: Set up Dart
-        uses: dart-lang/setup-dart@v1
-        with:
-          sdk: stable
-          environment: pub.dev
-
-      # 3. Get package dependencies.
-      - name: Install dependencies
-        run: dart pub get
-        
-      # 4. Check formating
-      - name: Checking Formating
-        run: dart format --output=none --set-exit-if-changed .
-
-      # 5. (Optional) Run tests or generate code if needed.
-      - name: Run tests
-        run: dart test
-
-      # 6. Publish the package to pub.dev.
-      # Ensure that your pub credentials (a JSON file) are stored in the secret `PUB_CREDENTIALS`.
-      - name: Publish package
-        env:
-          PUB_CREDENTIALS: ${{ secrets.PUB_CREDENTIALS }}
-        run: dart pub publish --skip-confirmation
+      id-token: write  # Required for OIDC authentication with pub.dev    
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    with:
+      # Specify the github actions deployment environment
+      environment: pub.dev
